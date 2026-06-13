@@ -10,33 +10,45 @@ export default async function LeadsPage() {
   const supabase = await createClient();
   const { data: userData } = await supabase.auth.getUser();
 
-  if (!userData.user) redirect("/admin/login");
+  if (!userData.user) {
+    redirect("/admin/login");
+  }
 
-  const { data: leads } = await supabase.from("leads").select("*").order("created_at", { ascending: false });
+  const { data: leads } = await supabase
+    .from("leads")
+    .select("*")
+    .order("created_at", { ascending: false });
 
   return (
     <main className="page">
       <Navbar />
+
       <section className="pageTop adminPageTop">
         <div className="container">
-          <div className="backLine"><Link href="/admin" className="btnLight">← Voltar ao painel</Link></div>
+          <div className="backLine">
+            <Link href="/admin" className="btnLight">← Voltar ao painel</Link>
+          </div>
           <span className="adminPill">Modo Corretor</span>
           <h1>Leads</h1>
           <p>Importe contatos por link de planilha e marque com check os que já foram conferidos.</p>
         </div>
       </section>
+
       <section className="section">
         <div className="container">
           <h2 className="sectionTitle">Importar por link</h2>
           <LeadImportForm />
         </div>
       </section>
+
       <section className="section sectionLight">
         <div className="container">
-          <h2 className="sectionTitle">Lista de leads</h2><br />
+          <h2 className="sectionTitle">Lista de leads</h2>
+          <br />
           <LeadTable leads={leads || []} />
         </div>
       </section>
+
       <Footer />
     </main>
   );

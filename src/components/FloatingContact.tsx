@@ -25,7 +25,12 @@ export default function FloatingContact() {
         </div>
       )}
 
-      <button className="floatMainButton" type="button" onClick={() => setOpen((value) => !value)} aria-label="Abrir contato">
+      <button
+        className="floatMainButton"
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        aria-label="Abrir contato"
+      >
         ☎
       </button>
     </div>

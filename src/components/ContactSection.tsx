@@ -17,7 +17,11 @@ export default function ContactSection() {
         </div>
 
         <div className="contactGrid">
-          <a href={`https://wa.me/${MAIN_WHATSAPP}`} target="_blank" className="contactCard">
+          <a
+            href={`https://wa.me/${MAIN_WHATSAPP}`}
+            target="_blank"
+            className="contactCard"
+          >
             <h3>Fale com o Corretor Alexandrowitch</h3>
             <p>Atendimento rápido pelo WhatsApp: (11) 97400-5163.</p>
           </a>

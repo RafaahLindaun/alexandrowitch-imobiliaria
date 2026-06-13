@@ -25,7 +25,9 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
             <h1>Imóvel não encontrado</h1>
             <p>Volte para a lista de imóveis e escolha outra opção.</p>
             <br />
-            <Link href="/imoveis" className="btnPrimary">Voltar para imóveis</Link>
+            <Link href="/imoveis" className="btnPrimary">
+              Voltar para imóveis
+            </Link>
           </div>
         </section>
         <Footer />
@@ -46,7 +48,11 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
 
   const floorPlans = (property.floor_plan_images || []).filter(Boolean) as string[];
 
-  const heroImage = property.cover_image || gallery[0] || "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1600&auto=format&fit=crop";
+  const heroImage =
+    property.cover_image ||
+    gallery[0] ||
+    "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1600&auto=format&fit=crop";
+
   const brokerPhone = property.broker_phone || "11974005163";
   const brokerName = property.broker_name || "Corretor Alexandrowitch";
   const brokerPhoto = property.broker_photo || "/logo-alexandrowitch.jpeg";
@@ -83,7 +89,9 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
             </ExpandableInfo>
 
             <ExpandableInfo title="Características principais">
-              <p>Imóvel localizado em {property.neighborhood || "São Roque"}, com foco em conforto, localização e segurança.</p>
+              <p>
+                Imóvel localizado em {property.neighborhood || "São Roque"}, com foco em conforto, localização e segurança.
+              </p>
             </ExpandableInfo>
 
             {gallery.length > 0 && (

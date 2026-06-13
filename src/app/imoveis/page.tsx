@@ -38,7 +38,11 @@ export default async function PropertiesPage({
           <div className="adminActions">
             <Link href="/imoveis" className={!tipo ? "btnPrimary" : "btnSecondary"}>Todos</Link>
             {categories.map((item) => (
-              <Link key={item} href={`/imoveis?tipo=${encodeURIComponent(item)}`} className={tipo === item ? "btnPrimary" : "btnSecondary"}>
+              <Link
+                key={item}
+                href={`/imoveis?tipo=${encodeURIComponent(item)}`}
+                className={tipo === item ? "btnPrimary" : "btnSecondary"}
+              >
                 {item}
               </Link>
             ))}

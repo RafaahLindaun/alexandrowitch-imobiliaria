@@ -8,7 +8,10 @@ export default function Footer() {
           <div className="brandName">Alexandrowitch</div>
           <div className="brandSub">Imobiliária e Administradora</div>
           <br />
-          <small>Compra • Venda • Locação • Administração<br />© 2026 Todos os direitos reservados.</small>
+          <small>
+            Compra • Venda • Locação • Administração
+            <br />© 2026 Todos os direitos reservados.
+          </small>
         </div>
 
         <div>
@@ -19,8 +22,23 @@ export default function Footer() {
         <div>
           <div className="socialTitle">Redes sociais</div>
           <div className="socialLinks">
-            <a href={INSTAGRAM_URL} target="_blank" className="socialIcon" aria-label="Instagram">◎</a>
-            <a href={FACEBOOK_URL} target="_blank" className="socialIcon" aria-label="Facebook">f</a>
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              className="socialIcon"
+              aria-label="Instagram"
+            >
+              ◎
+            </a>
+
+            <a
+              href={FACEBOOK_URL}
+              target="_blank"
+              className="socialIcon"
+              aria-label="Facebook"
+            >
+              f
+            </a>
           </div>
         </div>
       </div>

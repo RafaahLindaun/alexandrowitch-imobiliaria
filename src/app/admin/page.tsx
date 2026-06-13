@@ -8,9 +8,15 @@ export default async function AdminPage() {
   const supabase = await createClient();
   const { data: userData } = await supabase.auth.getUser();
 
-  if (!userData.user) redirect("/admin/login");
+  if (!userData.user) {
+    redirect("/admin/login");
+  }
 
-  const { data: properties } = await supabase.from("properties").select("*").order("created_at", { ascending: false });
+  const { data: properties } = await supabase
+    .from("properties")
+    .select("*")
+    .order("created_at", { ascending: false });
+
   const total = properties?.length || 0;
   const sold = properties?.filter((item) => item.status === "Vendido" || item.status === "Alugado").length || 0;
   const available = total - sold;
@@ -47,12 +53,18 @@ export default async function AdminPage() {
 
       <section className="section sectionLight">
         <div className="container">
-          <div className="sectionHeader"><h2 className="sectionTitle">Imóveis cadastrados</h2></div>
+          <div className="sectionHeader">
+            <h2 className="sectionTitle">Imóveis cadastrados</h2>
+          </div>
+
           {!properties?.length && <p className="sectionText">Nenhum imóvel cadastrado ainda.</p>}
+
           <div className="grid3">
             {(properties || []).map((property) => (
               <div className="adminCard" key={property.id}>
-                <span className={`statusBadge ${property.status === "Vendido" || property.status === "Alugado" ? "sold" : ""}`}>{property.status || "Disponível"}</span>
+                <span className={`statusBadge ${property.status === "Vendido" || property.status === "Alugado" ? "sold" : ""}`}>
+                  {property.status || "Disponível"}
+                </span>
                 <h3>{property.title}</h3>
                 <p>{property.operation} • {property.price}<br />{property.city} - {property.neighborhood || "Sem bairro"}</p>
                 <div className="adminActions">

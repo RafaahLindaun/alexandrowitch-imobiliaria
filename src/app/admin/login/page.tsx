@@ -9,6 +9,7 @@ import { createClient } from "../../../lib/supabase/client";
 export default function AdminLoginPage() {
   const router = useRouter();
   const supabase = createClient();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -17,7 +18,10 @@ export default function AdminLoginPage() {
     event.preventDefault();
     setMessage("Entrando...");
 
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
 
     if (error) {
       setMessage("E-mail ou senha inválidos.");
