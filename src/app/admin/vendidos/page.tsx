@@ -1,2 +1,50 @@
-import Link from "next/link";import {redirect} from "next/navigation";import Navbar from "../../../components/Navbar";import Footer from "../../../components/Footer";import {createClient} from "../../../lib/supabase/server";
-export default async function SoldPage(){const supabase=await createClient();const{data:userData}=await supabase.auth.getUser();if(!userData.user)redirect("/admin/login");const{data:properties}=await supabase.from("properties").select("*").in("status",["Vendido","Alugado"]).order("created_at",{ascending:false});return <main className="page"><Navbar/><section className="pageTop"><div className="container"><h1>Vendidos e Alugados</h1><p>Histórico de imóveis que já foram negociados.</p></div></section><section className="section sectionLight"><div className="container">{!properties?.length&&<p className="sectionText">Nenhum imóvel vendido ou alugado ainda.</p>}<div className="grid3">{(properties||[]).map(property=><div className="adminCard" key={property.id}><span className="statusBadge sold">{property.status}</span><h3>{property.title}</h3><p>{property.operation} • {property.price}</p><Link href={`/admin/editar/${property.id}`} className="btnPrimary">Editar</Link></div>)}</div></div></section><Footer/></main>}
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import Navbar from "../../../components/Navbar";
+import Footer from "../../../components/Footer";
+import { createClient } from "../../../lib/supabase/server";
+
+export default async function SoldPage() {
+  const supabase = await createClient();
+  const { data: userData } = await supabase.auth.getUser();
+
+  if (!userData.user) {
+    redirect("/admin/login");
+  }
+
+  const { data: properties } = await supabase
+    .from("properties")
+    .select("*")
+    .in("status", ["Vendido", "Alugado"])
+    .order("created_at", { ascending: false });
+
+  return (
+    <main className="page">
+      <Navbar />
+      <section className="pageTop">
+        <div className="container">
+          <h1>Vendidos e Alugados</h1>
+          <p>Histórico de imóveis que já foram negociados.</p>
+        </div>
+      </section>
+
+      <section className="section sectionLight">
+        <div className="container">
+          {!properties?.length && <p className="sectionText">Nenhum imóvel vendido ou alugado ainda.</p>}
+
+          <div className="grid3">
+            {(properties || []).map((property) => (
+              <div className="adminCard" key={property.id}>
+                <span className="statusBadge sold">{property.status}</span>
+                <h3>{property.title}</h3>
+                <p>{property.operation} • {property.price}</p>
+                <Link href={`/admin/editar/${property.id}`} className="btnPrimary">Editar</Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <Footer />
+    </main>
+  );
+}
