@@ -18,7 +18,7 @@ export default function Navbar() {
         <Link href="/imoveis">Imóveis</Link>
         <Link href="/sobre">Sobre</Link>
         <Link href="/contato">Contato</Link>
-        <Link href="/admin">Admin</Link>
+        <Link href="/admin/login">Corretor</Link>
         <a className="navCta" href="https://wa.me/5511974005163" target="_blank">
           Fale Conosco
         </a>

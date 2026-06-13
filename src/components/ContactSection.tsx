@@ -7,8 +7,12 @@ export default function ContactSection() {
             <div className="eyebrow">Fale conosco</div>
             <h2 className="sectionTitle">Escolha a melhor forma de contato</h2>
           </div>
-          <p className="sectionText">Atendimento para compra, venda, locação, administração de imóveis e dúvidas sobre oportunidades em São Roque.</p>
+          <p className="sectionText">
+            Atendimento para compra, venda, locação, administração de imóveis e
+            dúvidas sobre oportunidades em São Roque.
+          </p>
         </div>
+
         <div className="contactGrid">
           <a href="https://wa.me/5511974005163" target="_blank" className="contactCard">
             <h3>Fale com o Corretor</h3>

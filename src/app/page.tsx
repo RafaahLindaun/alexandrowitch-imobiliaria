@@ -18,7 +18,10 @@ export default function Home() {
           <div>
             <div className="eyebrow">Sobre a empresa</div>
             <h2 className="sectionTitle">Atendimento imobiliário com presença, confiança e sofisticação.</h2>
-            <p className="sectionText">A Alexandrowitch Imobiliária e Administradora atua em São Roque e região conectando pessoas às melhores oportunidades imobiliárias, com transparência, segurança e acompanhamento próximo em cada etapa.</p>
+            <p className="sectionText">
+              A Alexandrowitch Imobiliária e Administradora atua em São Roque e região conectando pessoas às melhores oportunidades imobiliárias,
+              com transparência, segurança e acompanhamento próximo em cada etapa.
+            </p>
           </div>
         </div>
       </section>

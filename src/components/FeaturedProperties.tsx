@@ -1,19 +1,35 @@
 import Link from "next/link";
-import { properties } from "../data/properties";
 import PropertyCard from "./PropertyCard";
+import { createClient } from "../lib/supabase/server";
 
-export default function FeaturedProperties() {
-  const featured = properties.filter((property) => property.featured);
+export default async function FeaturedProperties() {
+  const supabase = await createClient();
+
+  const { data: properties } = await supabase
+    .from("properties")
+    .select("*")
+    .eq("featured", true)
+    .order("created_at", { ascending: false })
+    .limit(3);
+
   return (
     <section className="section">
       <div className="container">
         <div className="sectionHeader">
           <h2 className="sectionTitle">Imóveis em destaque</h2>
-          <p className="sectionText">Uma seleção inicial de imóveis para venda e locação. Depois, esses dados poderão vir do painel administrativo.</p>
+          <p className="sectionText">Imóveis cadastrados diretamente pelo painel do corretor.</p>
         </div>
+
+        {!properties?.length && (
+          <p className="sectionText">Nenhum imóvel em destaque ainda.</p>
+        )}
+
         <div className="grid3">
-          {featured.map((property) => <PropertyCard key={property.id} property={property} />)}
+          {(properties || []).map((property) => (
+            <PropertyCard key={property.id} property={property} />
+          ))}
         </div>
+
         <div style={{ marginTop: 38 }}>
           <Link href="/imoveis" className="btnDark">Ver todos os imóveis</Link>
         </div>
