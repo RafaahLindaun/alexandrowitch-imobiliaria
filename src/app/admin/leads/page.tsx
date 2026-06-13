@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
@@ -22,8 +23,12 @@ export default async function LeadsPage() {
     <main className="page">
       <Navbar />
 
-      <section className="pageTop">
+      <section className="pageTop adminPageTop">
         <div className="container">
+          <div className="backLine">
+            <Link href="/admin" className="btnLight">← Voltar ao painel</Link>
+          </div>
+          <span className="adminPill">Modo Corretor</span>
           <h1>Leads</h1>
           <p>Importe contatos por link de planilha e marque com check os que já foram conferidos.</p>
         </div>

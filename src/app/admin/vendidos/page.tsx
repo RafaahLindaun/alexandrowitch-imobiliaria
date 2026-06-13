@@ -21,8 +21,12 @@ export default async function SoldPage() {
   return (
     <main className="page">
       <Navbar />
-      <section className="pageTop">
+      <section className="pageTop adminPageTop">
         <div className="container">
+          <div className="backLine">
+            <Link href="/admin" className="btnLight">← Voltar ao painel</Link>
+          </div>
+          <span className="adminPill">Modo Corretor</span>
           <h1>Vendidos e Alugados</h1>
           <p>Histórico de imóveis que já foram negociados.</p>
         </div>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
@@ -15,8 +16,12 @@ export default async function NewPropertyPage() {
   return (
     <main className="page">
       <Navbar />
-      <section className="pageTop">
+      <section className="pageTop adminPageTop">
         <div className="container">
+          <div className="backLine">
+            <Link href="/admin" className="btnLight">← Voltar ao painel</Link>
+          </div>
+          <span className="adminPill">Modo Corretor</span>
           <h1>Novo Imóvel</h1>
           <p>Cadastre informações, características e várias fotos do imóvel.</p>
         </div>

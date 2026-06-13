@@ -26,12 +26,14 @@ export default async function AdminPage() {
     <main className="page">
       <Navbar />
 
-      <section className="pageTop">
+      <section className="pageTop adminPageTop">
         <div className="container">
+          <span className="adminPill">Você está logado como corretor</span>
           <h1>Painel do Corretor</h1>
           <p>Cadastre, edite, marque vendidos e acompanhe leads.</p>
           <br />
           <div className="adminActions">
+            <Link href="/" className="btnLight">Ver site</Link>
             <Link href="/admin/novo" className="btnPrimary">Novo imóvel</Link>
             <Link href="/admin/leads" className="btnDark">Leads</Link>
             <Link href="/admin/vendidos" className="btnSecondary">Vendidos</Link>

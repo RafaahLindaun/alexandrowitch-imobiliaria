@@ -1,3 +1,5 @@
+import { CONTACT_EMAIL, EMAIL_LINK, MAIN_WHATSAPP } from "../constants/contact";
+
 export default function ContactSection() {
   return (
     <section className="section sectionDark">
@@ -16,23 +18,19 @@ export default function ContactSection() {
 
         <div className="contactGrid">
           <a
-            href="https://wa.me/5511974005163"
+            href={`https://wa.me/${MAIN_WHATSAPP}`}
             target="_blank"
             className="contactCard"
           >
-            <h3>Fale com o Corretor</h3>
+            <h3>Fale com o Corretor Alexandrowitch</h3>
             <p>Atendimento rápido pelo WhatsApp: (11) 97400-5163.</p>
           </a>
 
-          <div className="contactCard">
+          <a className="contactCard" href={EMAIL_LINK}>
             <h3>E-mail</h3>
-            <p>O e-mail será adicionado assim que você enviar o endereço oficial.</p>
-          </div>
-
-          <div className="contactCard">
-            <h3>Central de Relacionamento</h3>
-            <p>Suporte para clientes, proprietários e interessados em imóveis.</p>
-          </div>
+            <p>{CONTACT_EMAIL}</p>
+            <p>Clique para abrir um rascunho pronto e cordial.</p>
+          </a>
         </div>
       </div>
     </section>

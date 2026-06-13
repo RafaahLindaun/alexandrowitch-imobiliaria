@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import Navbar from "../../../../components/Navbar";
 import Footer from "../../../../components/Footer";
@@ -27,8 +28,12 @@ export default async function EditPropertyPage({ params }: { params: Promise<{ i
   return (
     <main className="page">
       <Navbar />
-      <section className="pageTop">
+      <section className="pageTop adminPageTop">
         <div className="container">
+          <div className="backLine">
+            <Link href="/admin" className="btnLight">← Voltar ao painel</Link>
+          </div>
+          <span className="adminPill">Modo Corretor</span>
           <h1>Editar Imóvel</h1>
           <p>Atualize informações e adicione novas fotos à galeria.</p>
         </div>

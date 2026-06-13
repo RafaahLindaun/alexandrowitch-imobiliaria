@@ -1,4 +1,5 @@
 import "./globals.css";
+import FloatingContact from "../components/FloatingContact";
 
 export const metadata = {
   title: "Alexandrowitch Imobiliária e Administradora",
@@ -8,7 +9,10 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
-      <body>{children}</body>
+      <body>
+        {children}
+        <FloatingContact />
+      </body>
     </html>
   );
 }

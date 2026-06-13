@@ -25,14 +25,18 @@ export default function Home() {
           <div className="container aboutBand">
             <div className="aboutImage" />
             <div>
-              <div className="eyebrow">Sobre a empresa</div>
+              <div className="eyebrow">Sobre a Alexandrowitch Imobiliária e Administradora</div>
               <h2 className="sectionTitle">
-                Atendimento imobiliário com presença, confiança e sofisticação.
+                Tradição familiar no mercado imobiliário desde 1964.
               </h2>
               <p className="sectionText">
-                A Alexandrowitch Imobiliária e Administradora atua em São Roque e região conectando pessoas às melhores oportunidades imobiliárias,
-                com transparência, segurança e acompanhamento próximo em cada etapa.
+                Somos de família tradicional no ramo imobiliário de São Paulo que atua na área desde 1964,
+                uma das precursoras na atividade. Somos especializadas na compra, venda e locação de imóveis,
+                principalmente em administração destas locações, sempre com transparência, honestidade e segurança.
               </p>
+              <a href="/sobre" className="btnDark">
+                Conheça nossa história
+              </a>
             </div>
           </div>
         </section>
