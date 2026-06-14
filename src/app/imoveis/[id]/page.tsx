@@ -3,7 +3,6 @@ import Footer from "../../../components/Footer";
 import ContactSection from "../../../components/ContactSection";
 import ExpandableInfo from "../../../components/ExpandableInfo";
 import ImageLightbox from "../../../components/ImageLightbox";
-import PropertyMapBlock from "../../../components/PropertyMapBlock";
 import { createClient } from "../../../lib/supabase/server";
 import Link from "next/link";
 
@@ -56,7 +55,7 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
 
   const brokerPhone = property.broker_phone || "11974005163";
   const brokerName = property.broker_name || "Corretor Alexandrowitch";
-  const brokerPhoto = property.broker_photo || "/logo-alexandrowitch.jpeg";
+  const brokerPhoto = property.broker_photo || "/logo-alexandrowitch.png";
 
   return (
     <main className="page">
@@ -109,8 +108,6 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
                 <ImageLightbox images={floorPlans} classNamePrefix="floor" />
               </div>
             )}
-
-            <PropertyMapBlock property={property} />
           </div>
 
           <aside className="sidebarBox">

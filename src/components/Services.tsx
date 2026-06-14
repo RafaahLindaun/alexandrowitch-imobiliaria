@@ -8,8 +8,12 @@ const services = [
     text: "Intermediação de locações residenciais, comerciais e de temporada com análise e suporte completo.",
   },
   {
-    title: "Administração",
+    title: "Administração de Imóveis",
     text: "Gestão de imóveis para proprietários que buscam tranquilidade, organização e acompanhamento profissional.",
+  },
+  {
+    title: "Administração de Condomínios",
+    text: "Apoio administrativo, organização de rotinas, comunicação e gestão para condomínios com padrão profissional.",
   },
   {
     title: "Assessoria Documental",
@@ -25,12 +29,12 @@ export default function Services() {
           <h2 className="sectionTitle">Serviços imobiliários completos</h2>
 
           <p className="sectionText">
-            Uma atuação pensada para proprietários, compradores, locatários e
-            investidores em São Roque e região.
+            Uma atuação pensada para proprietários, compradores, locatários, condomínios
+            e investidores em São Roque e região.
           </p>
         </div>
 
-        <div className="grid4">
+        <div className="servicesScroller">
           {services.map((service) => (
             <article className="serviceCard" key={service.title}>
               <h3>{service.title}</h3>

@@ -36,7 +36,6 @@ export default async function AdminPage() {
             <Link href="/" className="btnLight">Ver site</Link>
             <Link href="/imoveis" className="btnLight">Ver imóveis e editar</Link>
             <Link href="/admin/novo" className="btnPrimary">Novo imóvel</Link>
-            <Link href="/admin/leads" className="btnDark">Clientes</Link>
             <Link href="/admin/vendidos" className="btnSecondary">Vendidos</Link>
             <a href="/admin/logout" className="btnSecondary">Sair</a>
           </div>

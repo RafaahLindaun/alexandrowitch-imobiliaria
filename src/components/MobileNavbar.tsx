@@ -29,7 +29,6 @@ export default function MobileNavbar({ isAdmin = false }: { isAdmin?: boolean })
           {isAdmin ? (
             <>
               <Link href="/admin/novo">Novo imóvel</Link>
-              <Link href="/admin/leads">Leads</Link>
               <Link href="/admin/vendidos">Vendidos</Link>
               <Link href="/admin/logout">Sair</Link>
             </>

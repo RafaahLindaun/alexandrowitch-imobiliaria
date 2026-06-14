@@ -1242,3 +1242,377 @@ img {
 .propertiesTop{padding-bottom:48px;background:radial-gradient(circle at 12% 20%,rgba(201,168,106,.22),transparent 32%),linear-gradient(135deg,#071128,#0d1b3e 58%,#1f376d)}.premiumSearchShell{margin-top:38px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,106,.34);box-shadow:0 28px 70px rgba(0,0,0,.23);backdrop-filter:blur(14px);padding:26px;border-radius:30px;color:white;position:relative;overflow:hidden}.premiumSearchShell:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(255,255,255,.08),transparent 35%,rgba(201,168,106,.08));pointer-events:none}.premiumSearchHead{position:relative;z-index:1;display:flex;justify-content:space-between;gap:22px;margin-bottom:24px}.premiumSearchHead h2{font-family:Georgia,serif;font-weight:400;font-size:clamp(30px,4vw,46px);margin:0}.premiumSearchHead p{max-width:420px;color:rgba(255,255,255,.76);line-height:1.7}.premiumSearch{position:relative;z-index:1;display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.searchField{display:grid;gap:8px}.searchField label{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:rgba(226,193,127,.95)}.searchField select,.searchField input{width:100%;min-height:54px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.95);color:var(--azul);padding:0 15px;border-radius:16px;font-size:14px;outline:none}.searchField select:disabled{opacity:.75}.searchField select:focus,.searchField input:focus{border-color:var(--dourado);box-shadow:0 0 0 4px rgba(201,168,106,.22)}.luxuryDetails{grid-column:span 2;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,106,.25);border-radius:18px;overflow:hidden;transition:.25s ease}.luxuryDetails[open]{background:rgba(255,255,255,.13)}.luxuryDetails summary{list-style:none;cursor:pointer;min-height:54px;padding:0 16px;display:flex;justify-content:space-between;align-items:center;color:#fff;text-transform:uppercase;letter-spacing:.1em;font-size:12px;font-weight:800}.luxuryDetails summary::-webkit-details-marker{display:none}.luxuryDetails[open] summary strong{transform:rotate(45deg)}.luxuryDetails summary strong{transition:.2s ease;color:var(--dourado);font-size:22px}.detailsGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:0 14px 14px;animation:detailSlide .24s ease both}@keyframes detailSlide{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}.searchButton{grid-column:span 1;min-height:54px;border-radius:18px;border:0;background:var(--dourado);color:#111;font-weight:900;text-transform:uppercase;letter-spacing:.08em;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:10px;transition:.2s ease}.searchButton:hover{transform:translateY(-2px);filter:brightness(1.05)}.tinyLoader{width:18px;height:18px;border:2px solid rgba(0,0,0,.18);border-top-color:#111;border-radius:50%;animation:spin .8s linear infinite}.searchIsLoading{opacity:.78;pointer-events:none}.resultsHeader{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:34px}.resultsHeader h2{margin:0;font-family:Georgia,serif;color:var(--azul);font-size:clamp(30px,4vw,48px);font-weight:400}.emptyLuxury{background:white;border:1px solid rgba(201,168,106,.35);padding:34px;margin-bottom:24px}.emptyLuxury h3{font-family:Georgia,serif;color:var(--azul);font-size:28px;margin:0 0 8px}.resultGrid{animation:smoothEnter .46s ease both}@keyframes smoothEnter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 .imageMotionButton{border:0;display:block;width:100%;transition:transform .45s ease,filter .45s ease}.imageMotionButton:hover{transform:scale(1.015);filter:brightness(.96) contrast(1.05)}.lightbox{padding:18px}.lightboxFrame{position:relative;width:min(1120px,96vw);height:min(82vh,780px);display:grid;place-items:center}.lightboxImage{width:100%;height:100%;object-fit:contain;border-radius:16px}.imageWatermarkLogo{position:absolute;right:18px;bottom:18px;width:min(220px,36vw);opacity:.34;border-radius:12px;filter:drop-shadow(0 6px 16px rgba(0,0,0,.55));pointer-events:none}.mapBlock{margin-top:46px;background:#fff;border:1px solid rgba(201,168,106,.34);padding:26px;box-shadow:0 18px 45px rgba(13,27,62,.08)}.mapBlock h3{font-family:Georgia,serif;color:var(--azul);font-size:34px;font-weight:400;margin:0 0 8px}.mapBlock p{color:#5d6472;line-height:1.7}.mapPlaceholder{min-height:250px;margin:22px 0;border-radius:22px;border:1px solid rgba(201,168,106,.3);overflow:hidden;position:relative;background:linear-gradient(90deg,rgba(13,27,62,.08) 1px,transparent 1px),linear-gradient(0deg,rgba(13,27,62,.08) 1px,transparent 1px),linear-gradient(135deg,#f8f5ef,#e8dfcd);background-size:32px 32px,32px 32px,auto}.mapGridOverlay{position:absolute;inset:0;background:radial-gradient(circle at center,rgba(201,168,106,.22),transparent 35%)}.mapPin{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:78px;height:78px;border-radius:999px;display:grid;place-items:center;background:var(--azul);color:var(--dourado);font-size:44px;box-shadow:0 18px 38px rgba(13,27,62,.25)}.aboutPremiumTop{background:radial-gradient(circle at 80% 30%,rgba(201,168,106,.26),transparent 30%),linear-gradient(135deg,#071128,#0d1b3e 66%,#1d3568)}.aboutHeroGrid{display:grid;grid-template-columns:1.25fr .75fr;gap:50px;align-items:center}.aboutLogoPanel{background:rgba(255,255,255,.08);border:1px solid rgba(201,168,106,.34);padding:30px;border-radius:34px;box-shadow:0 28px 70px rgba(0,0,0,.22)}.aboutLogoPanel img{border-radius:24px;opacity:.96}.aboutTopicGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}.aboutTopic{background:#fff;border:1px solid rgba(201,168,106,.28);padding:34px;box-shadow:0 18px 45px rgba(13,27,62,.07)}.aboutTopic span{color:var(--dourado);font-weight:900;letter-spacing:.2em}.aboutTopic h2{font-family:Georgia,serif;color:var(--azul);font-weight:400;font-size:34px;margin:12px 0 14px}.aboutTopic p{color:#4d5868;line-height:1.85}.wideTopic{grid-column:span 2}.cookieBanner{position:fixed;left:22px;bottom:22px;z-index:145;width:min(460px,calc(100vw - 44px));background:rgba(255,255,255,.98);border:1px solid rgba(201,168,106,.45);box-shadow:0 22px 55px rgba(13,27,62,.18);padding:18px;border-radius:22px;display:grid;grid-template-columns:1fr auto;gap:16px;animation:bubbleIn .28s ease both}.cookieBanner strong{color:var(--azul)}.cookieBanner p{color:#5d6472;line-height:1.5;margin:4px 0 0}.cookieActions{display:flex;gap:8px;align-items:center}.compactBtn{min-height:42px;padding:0 14px}.floatMainButton{display:grid;place-items:center}.floatMainButton.isOpen{background:var(--azul);animation:none}
 @media(max-width:900px){.logoBox{width:54px;height:54px}.propertyCarousel,.compactCarousel{height:250px}.carouselArrow{width:38px;height:38px;font-size:28px}.metricGrid{grid-template-columns:repeat(2,1fr)}.metricGrid div:nth-child(2){border-right:0}.premiumSearchShell{padding:18px;border-radius:22px}.premiumSearchHead,.resultsHeader,.aboutHeroGrid,.cookieBanner{display:block}.premiumSearch{grid-template-columns:1fr}.luxuryDetails,.searchButton{grid-column:1}.detailsGrid,.aboutTopicGrid{grid-template-columns:1fr}.wideTopic{grid-column:span 1}.lightbox{align-items:center;padding:10px}.lightboxFrame{width:96vw;height:78vh}.lightboxClose{top:12px;right:12px;z-index:220}.imageWatermarkLogo{right:12px;bottom:12px;width:min(170px,48vw)}.mapBlock{padding:18px}.cookieBanner{left:12px;right:12px;bottom:88px;width:auto}.cookieActions{margin-top:14px;display:grid;grid-template-columns:1fr 1fr}.cookieActions .btnLight,.cookieActions .btnPrimary{width:100%;margin:0}.floatingContact{right:16px;bottom:16px}.floatMainButton{width:58px;height:58px}}
+
+/* V7 refinamento mobile, busca, whatsapp e imagens */
+html, body {
+  -webkit-font-smoothing: antialiased;
+}
+
+.logoBox {
+  width: 76px;
+  height: 76px;
+  background: rgba(255,255,255,.04);
+  padding: 6px;
+}
+
+.logoBox img {
+  object-fit: contain;
+}
+
+.servicesScroller {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.compactPremiumSearch {
+  max-width: 1120px;
+}
+
+.compactPremiumSearch .premiumSearchHead h2 {
+  font-size: clamp(34px, 4vw, 52px);
+}
+
+.compactPremiumSearch .premiumSearchHead p {
+  font-size: 16px;
+}
+
+.compactPremiumSearch .premiumSearch {
+  grid-template-columns: repeat(4, 1fr);
+  align-items: end;
+}
+
+.primaryField {
+  min-width: 0;
+}
+
+.advancedDetails {
+  grid-column: span 3;
+}
+
+.advancedGrid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.compactPremiumSearch .searchButton {
+  grid-column: span 1;
+}
+
+.searchField select,
+.searchField input {
+  appearance: auto;
+}
+
+.floatingContact {
+  right: 24px;
+  bottom: 24px;
+}
+
+.floatMainButton {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  line-height: 1;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
+
+.floatWhatsIcon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: #fff;
+  color: #25d366;
+  font-weight: 900;
+  font-size: 22px;
+  letter-spacing: -0.06em;
+  transform: translateY(0);
+}
+
+.floatCloseIcon {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 38px;
+  line-height: 1;
+  transform: translateY(-2px);
+}
+
+.floatPanel {
+  bottom: 78px;
+}
+
+.propertyCarousel img {
+  object-position: center;
+}
+
+.lightbox {
+  align-items: center;
+  justify-items: center;
+  padding: 18px;
+  overscroll-behavior: contain;
+}
+
+.lightboxFrame {
+  width: min(1120px, calc(100vw - 36px));
+  height: min(82dvh, 780px);
+  max-height: calc(100dvh - 76px);
+  display: grid;
+  place-items: center;
+}
+
+.lightboxImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+  border-radius: 14px;
+}
+
+.imageWatermarkLogo {
+  width: min(210px, 32vw);
+  opacity: .32;
+  object-fit: contain;
+  background: transparent;
+}
+
+.mapBlock {
+  display: none !important;
+}
+
+.cookieBanner {
+  z-index: 130;
+}
+
+@media(max-width:1100px) {
+  .servicesScroller {
+    display: flex;
+    overflow-x: auto;
+    gap: 18px;
+    padding-bottom: 16px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .servicesScroller .serviceCard {
+    min-width: min(330px, 82vw);
+    scroll-snap-align: start;
+  }
+
+  .compactPremiumSearch .premiumSearch {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .advancedDetails {
+    grid-column: span 2;
+  }
+
+  .compactPremiumSearch .searchButton {
+    grid-column: span 2;
+  }
+}
+
+@media(max-width:900px) {
+  .navbar {
+    padding: 12px 18px;
+  }
+
+  .logoBox {
+    width: 58px;
+    height: 58px;
+    padding: 5px;
+  }
+
+  .propertiesTop {
+    padding-top: 118px;
+  }
+
+  .premiumSearchShell {
+    margin-top: 24px;
+    padding: 18px;
+    border-radius: 24px;
+  }
+
+  .premiumSearchHead {
+    margin-bottom: 16px;
+  }
+
+  .premiumSearchHead h2 {
+    font-size: 34px !important;
+    line-height: 1.02;
+  }
+
+  .premiumSearchHead p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  .compactPremiumSearch .premiumSearch {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .searchField {
+    gap: 6px;
+  }
+
+  .searchField label {
+    font-size: 10px;
+    letter-spacing: .16em;
+  }
+
+  .searchField select,
+  .searchField input {
+    min-height: 44px;
+    border-radius: 999px;
+    font-size: 14px;
+    padding: 0 13px;
+  }
+
+  .advancedDetails {
+    grid-column: span 2;
+    border-radius: 22px;
+  }
+
+  .luxuryDetails summary {
+    min-height: 50px;
+    font-size: 11px;
+    padding: 0 16px;
+  }
+
+  .advancedGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .compactPremiumSearch .searchButton {
+    grid-column: span 2;
+    min-height: 52px;
+    border-radius: 999px;
+  }
+
+  .propertyCarousel,
+  .compactCarousel {
+    height: 238px;
+  }
+
+  .carouselArrow {
+    width: 34px;
+    height: 34px;
+    font-size: 25px;
+  }
+
+  .carouselDots {
+    bottom: 10px;
+  }
+
+  .metricGrid {
+    grid-template-columns: repeat(4, 1fr);
+    overflow-x: auto;
+  }
+
+  .metricGrid div {
+    min-width: 74px;
+    padding: 12px 7px;
+  }
+
+  .metricGrid strong {
+    font-size: 15px;
+  }
+
+  .metricGrid span {
+    font-size: 9px;
+  }
+
+  .floatingContact {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .floatMainButton {
+    width: 58px;
+    height: 58px;
+  }
+
+  .floatPanel {
+    right: 0;
+    bottom: 70px;
+    width: min(330px, calc(100vw - 28px));
+    padding: 18px;
+  }
+
+  .floatPanel h3 {
+    font-size: 23px;
+  }
+
+  .floatActions .btnDark,
+  .floatActions .btnPrimary {
+    width: 100%;
+    margin: 0;
+  }
+
+  .lightbox {
+    padding: 10px;
+    align-items: center;
+  }
+
+  .lightboxFrame {
+    width: calc(100vw - 20px);
+    height: calc(100dvh - 92px);
+    max-height: calc(100dvh - 92px);
+  }
+
+  .lightboxImage {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .lightboxClose {
+    top: 12px;
+    right: 12px;
+    min-height: 42px;
+    width: auto;
+    padding: 0 16px;
+    margin: 0;
+  }
+
+  .imageWatermarkLogo {
+    right: 12px;
+    bottom: 14px;
+    width: min(150px, 42vw);
+  }
+
+  .cookieBanner {
+    display: none;
+  }
+}
+
+@media(max-width:430px) {
+  .premiumSearchShell {
+    padding: 16px 14px;
+  }
+
+  .premiumSearchHead h2 {
+    font-size: 30px !important;
+  }
+
+  .searchField label {
+    font-size: 9px;
+  }
+
+  .searchField select,
+  .searchField input {
+    font-size: 13px;
+  }
+
+  .advancedGrid {
+    grid-template-columns: 1fr;
+  }
+}
