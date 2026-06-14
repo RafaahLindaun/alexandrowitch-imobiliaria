@@ -1,30 +1,32 @@
+"use client";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { createClient } from "../lib/supabase/client";
 import { Property } from "../types/property";
-
-export default function PropertyCard({ property }: { property: Property }) {
-  const image =
-    property.cover_image ||
-    "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1600&auto=format&fit=crop";
-
+import PropertyImageCarousel from "./PropertyImageCarousel";
+export default function PropertyCard({ property, images = [] }: { property: Property; images?: string[] }) {
+  const [isAdmin, setIsAdmin] = useState(false);
+  useEffect(() => { const supabase = createClient(); supabase.auth.getUser().then(({ data }) => setIsAdmin(!!data.user)); }, []);
+  const safeImages = [property.cover_image, ...images].filter(Boolean) as string[];
   const sold = property.status === "Vendido" || property.status === "Alugado";
-
   return (
     <article className="propertyCard luxuriousPropertyCard">
-      <div className="propertyImage parallaxImage" style={{ backgroundImage: `url(${image})` }} />
+      <PropertyImageCarousel images={safeImages} title={property.title} compact />
       <div className="propertyBody">
-        <span className={`statusBadge ${sold ? "sold" : ""}`}>{property.status || property.operation}</span>
+        <div className="cardTopLine"><span className={`statusBadge ${sold ? "sold" : ""}`}>{property.status || property.operation}</span><span className="propertyCode">#{String(property.id).slice(0, 6)}</span></div>
         <h3>{property.title}</h3>
-        <div className="propertyMeta">{property.neighborhood || "São Roque"} • {property.city}</div>
+        <div className="propertyMeta">{property.neighborhood || "Bairro não informado"} • {property.city}</div>
         <div className="propertyPrice">{property.price}</div>
-        <div className="features">
-          <span>{property.category}</span>
-          {property.area && <span>{property.area}</span>}
-          {!!property.bedrooms && property.bedrooms > 0 && <span>{property.bedrooms} dorm.</span>}
-          {!!property.parking && property.parking > 0 && <span>{property.parking} vagas</span>}
+        <div className="metricGrid">
+          {property.area && <div><strong>{property.area}</strong><span>Área</span></div>}
+          <div><strong>{property.bedrooms || 0}</strong><span>Quartos</span></div>
+          <div><strong>{property.bathrooms || 0}</strong><span>Banheiros</span></div>
+          <div><strong>{property.parking || 0}</strong><span>Vagas</span></div>
         </div>
-        <Link href={`/imoveis/${property.slug}`} className="btnDark" target="_blank" rel="noopener noreferrer">
-          Ver detalhes
-        </Link>
+        <div className="cardActions">
+          <Link href={`/imoveis/${property.slug}`} className="btnDark" target="_blank" rel="noopener noreferrer">Ver imóvel</Link>
+          {isAdmin && <Link href={`/admin/editar/${property.id}`} className="btnPrimary">Editar</Link>}
+        </div>
       </div>
     </article>
   );

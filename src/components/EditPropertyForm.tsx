@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "../lib/supabase/client";
+import LocationFields from "./LocationFields";
+import { PROPERTY_TYPES } from "../data/locationOptions";
 import { Property } from "../types/property";
 
 export default function EditPropertyForm({ property }: { property: Property }) {
@@ -147,10 +149,9 @@ export default function EditPropertyForm({ property }: { property: Property }) {
         <option>Alugado</option>
       </select>
 
-      <input className="input" name="category" defaultValue={property.category} />
+      <select className="select" name="category" defaultValue={property.category || "Casa"}>{PROPERTY_TYPES.map((type) => <option key={type} value={type}>{type}</option>)}</select>
       <input className="input" name="price" defaultValue={property.price} />
-      <input className="input" name="city" defaultValue={property.city} />
-      <input className="input" name="neighborhood" defaultValue={property.neighborhood || ""} />
+      <LocationFields defaultCity={property.city} defaultNeighborhood={property.neighborhood || ""} />
       <input className="input" name="area" defaultValue={property.area || ""} />
       <input className="input" name="bedrooms" type="number" defaultValue={property.bedrooms || 0} />
       <input className="input" name="suites" type="number" defaultValue={property.suites || 0} />

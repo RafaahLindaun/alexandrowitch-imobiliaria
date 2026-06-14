@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "../lib/supabase/client";
+import LocationFields from "./LocationFields";
+import { PROPERTY_TYPES } from "../data/locationOptions";
 
 function createSlug(value: string) {
   return value
@@ -140,10 +142,9 @@ export default function NewPropertyForm() {
         <option>Alugado</option>
       </select>
 
-      <input className="input" name="category" placeholder="Categoria" />
+      <select className="select" name="category" defaultValue="Casa">{PROPERTY_TYPES.map((type) => <option key={type} value={type}>{type}</option>)}</select>
       <input className="input" name="price" placeholder="Valor" required />
-      <input className="input" name="city" placeholder="Cidade" defaultValue="São Roque" />
-      <input className="input" name="neighborhood" placeholder="Bairro" />
+      <LocationFields defaultCity="São Roque" />
       <input className="input" name="area" placeholder="Área" />
       <input className="input" name="bedrooms" type="number" placeholder="Dormitórios" />
       <input className="input" name="suites" type="number" placeholder="Suítes" />
