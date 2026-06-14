@@ -9,32 +9,20 @@ export default function PropertyCard({ property }: { property: Property }) {
   const sold = property.status === "Vendido" || property.status === "Alugado";
 
   return (
-    <article className="propertyCard">
-      <div className="propertyImage" style={{ backgroundImage: `url(${image})` }} />
-
+    <article className="propertyCard luxuriousPropertyCard">
+      <div className="propertyImage parallaxImage" style={{ backgroundImage: `url(${image})` }} />
       <div className="propertyBody">
-        <span className={`statusBadge ${sold ? "sold" : ""}`}>
-          {property.status || property.operation}
-        </span>
-
+        <span className={`statusBadge ${sold ? "sold" : ""}`}>{property.status || property.operation}</span>
         <h3>{property.title}</h3>
-        <div className="propertyMeta">
-          {property.neighborhood || "São Roque"} • {property.city}
-        </div>
+        <div className="propertyMeta">{property.neighborhood || "São Roque"} • {property.city}</div>
         <div className="propertyPrice">{property.price}</div>
-
         <div className="features">
           <span>{property.category}</span>
           {property.area && <span>{property.area}</span>}
-          {!!property.bedrooms && property.bedrooms > 0 && (
-            <span>{property.bedrooms} dorm.</span>
-          )}
-          {!!property.parking && property.parking > 0 && (
-            <span>{property.parking} vagas</span>
-          )}
+          {!!property.bedrooms && property.bedrooms > 0 && <span>{property.bedrooms} dorm.</span>}
+          {!!property.parking && property.parking > 0 && <span>{property.parking} vagas</span>}
         </div>
-
-        <Link href={`/imoveis/${property.slug}`} className="btnDark">
+        <Link href={`/imoveis/${property.slug}`} className="btnDark" target="_blank" rel="noopener noreferrer">
           Ver detalhes
         </Link>
       </div>

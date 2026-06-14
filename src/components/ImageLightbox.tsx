@@ -20,11 +20,13 @@ export default function ImageLightbox({
     <>
       <div className={wrapperClass}>
         {images.slice(0, classNamePrefix === "floor" ? images.length : 7).map((image, index) => (
-          <div
+          <button
+            type="button"
             key={`${image}-${index}`}
-            className={itemClass}
+            className={`${itemClass} imageMotionButton`}
             style={{ backgroundImage: `url(${image})` }}
             onClick={() => setSelected(image)}
+            aria-label="Ampliar imagem"
           />
         ))}
       </div>
@@ -32,7 +34,10 @@ export default function ImageLightbox({
       {selected && (
         <div className="lightbox" onClick={() => setSelected(null)}>
           <button className="lightboxClose" type="button">Fechar</button>
-          <img className="lightboxImage" src={selected} alt="Imagem ampliada" />
+          <div className="lightboxFrame" onClick={(event) => event.stopPropagation()}>
+            <img className="lightboxImage" src={selected} alt="Imagem ampliada" />
+            <div className="imageWatermark">Alexandrowitch Imobiliária</div>
+          </div>
         </div>
       )}
     </>

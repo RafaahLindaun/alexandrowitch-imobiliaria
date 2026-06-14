@@ -3,6 +3,7 @@ import Footer from "../../../components/Footer";
 import ContactSection from "../../../components/ContactSection";
 import ExpandableInfo from "../../../components/ExpandableInfo";
 import ImageLightbox from "../../../components/ImageLightbox";
+import PropertyMapBlock from "../../../components/PropertyMapBlock";
 import { createClient } from "../../../lib/supabase/server";
 import Link from "next/link";
 
@@ -108,6 +109,8 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
                 <ImageLightbox images={floorPlans} classNamePrefix="floor" />
               </div>
             )}
+
+            <PropertyMapBlock property={property} />
           </div>
 
           <aside className="sidebarBox">
