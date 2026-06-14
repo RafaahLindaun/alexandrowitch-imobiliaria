@@ -20,7 +20,7 @@ export default function Navbar() {
     <header className={`navbar ${isAdmin ? "adminMode" : ""}`}>
       <Link href="/" className="navbarBrand">
         <div className="logoBox">
-          <img src="/logo-alexandrowitch.png" alt="Logo Alexandrowitch" />
+          <img src="/logo-alexandrowitch.jpeg" alt="Logo Alexandrowitch" />
         </div>
         <div>
           <div className="brandName">Alexandrowitch</div>
