@@ -2020,3 +2020,314 @@ html, body {
 @media(max-width:1100px){.homeActionGrid,.quickBrowseGrid,.premiumFooterInner{grid-template-columns:repeat(2,1fr)}.servicesScroller{display:flex;overflow-x:auto;gap:18px;padding-bottom:16px;scroll-snap-type:x mandatory}.servicesScroller .serviceCard{min-width:min(330px,82vw);scroll-snap-align:start}.contactGrid3{grid-template-columns:1fr}}
 @media(max-width:900px){.mobileMenuButton{display:flex}.newHero{min-height:86vh;padding-top:124px;padding-bottom:130px}.newHero h1{font-size:clamp(42px,13vw,64px)}.newHero p{font-size:16px;max-width:92%}.homeActionWrap{margin-top:-96px;padding:0 16px 18px}.homeActionGrid{grid-template-columns:1fr 1fr;gap:10px}.homeActionCard{min-height:145px;padding:16px;border-radius:20px}.homeActionCard h3{font-size:20px}.homeActionCard p{font-size:13px}.homeSearchSection{padding-top:34px}.premiumSearchShell{border-radius:24px}.premiumSearchHead h2{font-size:32px!important}.premiumSearchHead p{display:none}.compactPremiumSearch .premiumSearch{grid-template-columns:1fr 1fr}.searchField select,.searchField input{min-height:44px}.advancedDetails,.compactPremiumSearch .searchButton{grid-column:span 2}.advancedGrid{grid-template-columns:1fr 1fr}.quickBrowseGrid{display:flex;overflow-x:auto;gap:12px;padding-bottom:12px;scroll-snap-type:x mandatory}.quickBrowseBox{min-width:min(310px,82vw);scroll-snap-align:start;border-radius:20px}.requestPropertyBox{grid-template-columns:1fr}.requestPropertyBox .btnPrimary{width:100%}.premiumFooterInner{grid-template-columns:1fr}.footerBottom{padding-left:20px;padding-right:20px}.mobilePanel{top:76px;max-height:calc(100dvh - 92px);overflow-y:auto}.parallaxSoft{background-attachment:scroll}}
 @media(max-width:430px){.homeActionGrid{grid-template-columns:1fr}.homeActionCard{min-height:auto}.advancedGrid{grid-template-columns:1fr}.compactPremiumSearch .premiumSearch{grid-template-columns:1fr}.advancedDetails,.compactPremiumSearch .searchButton{grid-column:span 1}}
+
+
+/* V10 refinamentos visuais baseados nos pontos levantados */
+.premiumBrandLockup {
+  gap: 14px;
+  align-items: center;
+}
+
+.premiumLogoBox {
+  width: 74px;
+  height: 74px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(201,168,106,.5);
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
+}
+
+.premiumLogoBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 999px;
+  background: white;
+}
+
+.brandTextWrap {
+  display: grid;
+  gap: 2px;
+}
+
+.navbar .brandName {
+  letter-spacing: .08em;
+  font-size: clamp(24px, 2vw, 34px);
+  line-height: 1;
+}
+
+.navbar .brandSub {
+  letter-spacing: .22em;
+  font-size: 12px;
+}
+
+.refinedAboutLogoPanel {
+  max-width: 420px;
+  margin-left: auto;
+  padding: 18px;
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
+}
+
+.refinedAboutLogoPanel img {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  border-radius: 24px;
+  object-fit: contain;
+  background: transparent;
+}
+
+.socialLinksRich {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.socialChip {
+  min-height: 50px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(201,168,106,.55);
+  display: inline-flex !important;
+  align-items: center;
+  gap: 10px;
+  color: #e2c17f !important;
+  background: rgba(255,255,255,.03);
+}
+
+.socialSvg {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+}
+
+.socialSvg svg {
+  width: 100%;
+  height: 100%;
+}
+
+.detailSectionTight {
+  padding-top: 50px;
+  padding-bottom: 24px;
+}
+
+.detailIntroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(320px, .7fr);
+  gap: 34px;
+  align-items: start;
+}
+
+.detailPriceRow .sectionTitle {
+  margin-bottom: 10px;
+}
+
+.detailChipGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.detailChipGrid span {
+  background: #f2ebde;
+  color: var(--azul);
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.luxurySidebarBox {
+  background: #f7f1e7;
+  border: 1px solid rgba(201,168,106,.24);
+  box-shadow: 0 18px 45px rgba(13,27,62,.08);
+  border-radius: 22px;
+  padding: 26px;
+}
+
+.luxurySidebarBox > h3 {
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--azul);
+}
+
+.brokerCardRefined {
+  border-radius: 18px;
+  border: 1px solid rgba(201,168,106,.24);
+  padding: 22px;
+  background: white;
+}
+
+.brokerCardRefined .brokerTop {
+  gap: 16px;
+  align-items: center;
+}
+
+.brokerCardRefined .brokerPhoto {
+  width: 76px;
+  height: 76px;
+  border-radius: 999px;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid var(--dourado);
+}
+
+.brokerCardRefined h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 800;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.brokerCardRefined p {
+  margin: 0;
+  color: #4d5868;
+}
+
+.brokerCardRefined .btnPrimary {
+  margin-top: 18px;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+}
+
+.gallerySectionCompact {
+  padding-top: 18px;
+  padding-bottom: 28px;
+}
+
+.detailGalleryBlock {
+  background: white;
+  border: 1px solid rgba(201,168,106,.28);
+  box-shadow: 0 18px 45px rgba(13,27,62,.08);
+  padding: 26px;
+}
+
+.detailGalleryHead {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: end;
+  margin-bottom: 18px;
+}
+
+.detailGalleryHead h3 {
+  margin: 6px 0 0;
+  font-family: Georgia, serif;
+  color: var(--azul);
+  font-size: 34px;
+  font-weight: 400;
+}
+
+.detailGalleryHead p {
+  max-width: 500px;
+  color: #5d6472;
+  line-height: 1.7;
+}
+
+.detailBodyGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr);
+  gap: 34px;
+  align-items: start;
+}
+
+.detailContentStack {
+  display: grid;
+  gap: 14px;
+}
+
+.detailFactsPanel {
+  background: white;
+  border: 1px solid rgba(201,168,106,.28);
+  box-shadow: 0 18px 45px rgba(13,27,62,.08);
+  padding: 26px;
+  position: sticky;
+  top: 110px;
+}
+
+.detailFactsPanel h3 {
+  margin: 0 0 18px;
+  color: var(--azul);
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-size: 28px;
+}
+
+.detailFactsGrid {
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0;
+}
+
+.detailFactsGrid div {
+  min-height: 110px;
+}
+
+.floorPlanBlockRefined {
+  margin-top: 12px;
+}
+
+@media(max-width: 900px) {
+  .premiumLogoBox {
+    width: 58px;
+    height: 58px;
+  }
+
+  .navbar .brandName {
+    font-size: 22px;
+  }
+
+  .navbar .brandSub {
+    font-size: 10px;
+    letter-spacing: .18em;
+  }
+
+  .socialLinksRich {
+    gap: 10px;
+  }
+
+  .socialChip {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .detailIntroGrid,
+  .detailBodyGrid,
+  .detailGalleryHead {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .detailGalleryBlock,
+  .detailFactsPanel,
+  .luxurySidebarBox {
+    border-radius: 20px;
+    padding: 18px;
+  }
+
+  .detailGalleryHead {
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .detailGalleryHead h3 {
+    font-size: 28px;
+  }
+
+  .detailFactsPanel {
+    position: static;
+  }
+
+  .refinedAboutLogoPanel {
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .refinedAboutLogoPanel img {
+    max-width: 240px;
+  }
+}

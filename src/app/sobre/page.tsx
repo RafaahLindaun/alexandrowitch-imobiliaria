@@ -1,6 +1,42 @@
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import ContactSection from "../../components/ContactSection";
+
 export default function AboutPage() {
-  return <main className="page"><Navbar /><section className="pageTop aboutPremiumTop"><div className="container aboutHeroGrid"><div><span className="eyebrow">Sobre a Alexandrowitch</span><h1>Tradição familiar, atendimento próximo e gestão imobiliária com segurança.</h1><p>Uma história construída no mercado imobiliário desde 1964, com ética, transparência e cuidado em cada negociação.</p></div><div className="aboutLogoPanel"><img src="/logo-alexandrowitch.png" alt="Alexandrowitch Imobiliária" /></div></div></section><section className="section sectionLight"><div className="container aboutTopicGrid"><article className="aboutTopic"><span>01</span><h2>Origem e tradição</h2><p>Somos de família tradicional no ramo imobiliário de São Paulo que atua na área desde 1964, uma das precursoras na atividade. Essa vivência proporcionou a Maria Cristina Alexandrowitch uma forte experiência no setor desde muito nova.</p></article><article className="aboutTopic"><span>02</span><h2>Continuidade familiar</h2><p>Sua filha, Cristiane Alexandrowitch do Amaral, seguiu os mesmos passos. Juntas, desenvolveram um trabalho diferenciado, pautado por acompanhamento próximo e condução segura das negociações.</p></article><article className="aboutTopic wideTopic"><span>03</span><h2>Atuação especializada</h2><p>Somos especializadas na compra, venda e locação de imóveis, principalmente na administração destas locações. Prestamos toda assessoria necessária à realização de uma transação segura e tranquila, com acompanhamento jurídico e operacional de qualidade.</p></article><article className="aboutTopic"><span>04</span><h2>Valores</h2><p>Nossos valores são a ética profissional, a transparência no mercado imobiliário e a máxima honestidade na condução de cada atendimento.</p></article><article className="aboutTopic"><span>05</span><h2>Atendimento personalizado</h2><p>Oferecemos aos nossos clientes um atendimento personalizado, resultando em segurança e satisfação em todos os negócios realizados.</p></article><article className="aboutTopic wideTopic"><span>06</span><h2>Nosso compromisso</h2><p>Somos profissionais capacitadas e diferenciadas para uma total eficiência e garantia nas intermediações imobiliárias. Entre em contato, teremos o prazer em ajudá-lo a realizar o sonho de adquirir a casa própria ou alugar o seu imóvel com a maior segurança de recebimento e cuidado com o seu patrimônio.</p></article></div></section><ContactSection /><Footer /></main>;
+  return (
+    <main className="page">
+      <Navbar />
+
+      <section className="pageTop aboutPremiumTop">
+        <div className="container aboutHeroGrid">
+          <div>
+            <span className="eyebrow">Sobre a Alexandrowitch</span>
+            <h1>Tradição familiar, atendimento próximo e gestão imobiliária com segurança.</h1>
+            <p>
+              Uma história construída no mercado imobiliário desde 1964, com ética,
+              transparência e cuidado em cada negociação.
+            </p>
+          </div>
+
+          <div className="aboutLogoPanel refinedAboutLogoPanel">
+            <img src="/logo-alexandrowitch.jpeg" alt="Alexandrowitch Imobiliária" />
+          </div>
+        </div>
+      </section>
+
+      <section className="section sectionLight">
+        <div className="container aboutTopicGrid">
+          <article className="aboutTopic"><span>01</span><h2>Origem e tradição</h2><p>Somos de família tradicional no ramo imobiliário de São Paulo que atua na área desde 1964, uma das precursoras na atividade. Essa vivência proporcionou a Maria Cristina Alexandrowitch uma forte experiência no setor desde muito nova.</p></article>
+          <article className="aboutTopic"><span>02</span><h2>Continuidade familiar</h2><p>Sua filha, Cristiane Alexandrowitch do Amaral, seguiu os mesmos passos. Juntas, desenvolveram um trabalho diferenciado, pautado por acompanhamento próximo e condução segura das negociações.</p></article>
+          <article className="aboutTopic wideTopic"><span>03</span><h2>Atuação especializada</h2><p>Somos especializadas na compra, venda e locação de imóveis, principalmente na administração destas locações. Prestamos toda assessoria necessária à realização de uma transação segura e tranquila, com acompanhamento jurídico e operacional de qualidade.</p></article>
+          <article className="aboutTopic"><span>04</span><h2>Valores</h2><p>Nossos valores são a ética profissional, a transparência no mercado imobiliário e a máxima honestidade na condução de cada atendimento.</p></article>
+          <article className="aboutTopic"><span>05</span><h2>Atendimento personalizado</h2><p>Oferecemos aos nossos clientes um atendimento personalizado, resultando em segurança e satisfação em todos os negócios realizados.</p></article>
+          <article className="aboutTopic wideTopic"><span>06</span><h2>Nosso compromisso</h2><p>Somos profissionais capacitadas e diferenciadas para uma total eficiência e garantia nas intermediações imobiliárias. Entre em contato, teremos o prazer em ajudá-lo a realizar o sonho de adquirir a casa própria ou alugar o seu imóvel com a maior segurança de recebimento e cuidado com o seu patrimônio.</p></article>
+        </div>
+      </section>
+
+      <ContactSection />
+      <Footer />
+    </main>
+  );
 }

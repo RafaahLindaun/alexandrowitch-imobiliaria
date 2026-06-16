@@ -25,9 +25,7 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
             <h1>Imóvel não encontrado</h1>
             <p>Volte para a lista de imóveis e escolha outra opção.</p>
             <br />
-            <Link href="/imoveis" className="btnPrimary">
-              Voltar para imóveis
-            </Link>
+            <Link href="/imoveis" className="btnPrimary">Voltar para imóveis</Link>
           </div>
         </section>
         <Footer />
@@ -41,18 +39,11 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
     .eq("property_id", property.id)
     .order("created_at", { ascending: true });
 
-  const gallery = [
-    property.cover_image,
-    ...((images || []).map((image) => image.image_url)),
-  ].filter(Boolean) as string[];
+  const gallery = [property.cover_image, ...((images || []).map((image) => image.image_url))]
+    .filter(Boolean) as string[];
 
   const floorPlans = (property.floor_plan_images || []).filter(Boolean) as string[];
-
-  const heroImage =
-    property.cover_image ||
-    gallery[0] ||
-    "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1600&auto=format&fit=crop";
-
+  const heroImage = property.cover_image || gallery[0] || "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1600&auto=format&fit=crop";
   const brokerPhone = property.broker_phone || "11974005163";
   const brokerName = property.broker_name || "Corretor Alexandrowitch";
   const brokerPhoto = property.broker_photo || "/logo-alexandrowitch.png";
@@ -69,12 +60,14 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
         </div>
       </section>
 
-      <section className="section">
-        <div className="container detailLayout">
+      <section className="section detailSectionTight">
+        <div className="container detailIntroGrid">
           <div>
-            <h2 className="sectionTitle">{property.price}</h2>
+            <div className="detailPriceRow">
+              <h2 className="sectionTitle">{property.price}</h2>
+            </div>
 
-            <div className="features">
+            <div className="detailChipGrid">
               <span>{property.status || "Disponível"}</span>
               <span>{property.category}</span>
               {property.area && <span>{property.area}</span>}
@@ -83,37 +76,11 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
               {!!property.bathrooms && property.bathrooms > 0 && <span>{property.bathrooms} banheiros</span>}
               {!!property.parking && property.parking > 0 && <span>{property.parking} vagas</span>}
             </div>
-
-            <ExpandableInfo title="Descrição do imóvel" defaultOpen>
-              <p>{property.description || "Descrição em breve."}</p>
-            </ExpandableInfo>
-
-            <ExpandableInfo title="Características principais">
-              <p>
-                Imóvel localizado em {property.neighborhood || "São Roque"}, com foco em conforto, localização e segurança.
-              </p>
-            </ExpandableInfo>
-
-            {gallery.length > 0 && (
-              <>
-                <h3>Galeria</h3>
-                <ImageLightbox images={gallery} />
-              </>
-            )}
-
-            {floorPlans.length > 0 && (
-              <div>
-                <h3>Plantas do imóvel</h3>
-                <p className="sectionText">Clique para ampliar as plantas disponíveis.</p>
-                <ImageLightbox images={floorPlans} classNamePrefix="floor" />
-              </div>
-            )}
           </div>
 
-          <aside className="sidebarBox">
+          <aside className="sidebarBox luxurySidebarBox">
             <h3>Corretor responsável</h3>
-
-            <div className="brokerCard">
+            <div className="brokerCard brokerCardRefined">
               <div className="brokerTop">
                 <div className="brokerPhoto" style={{ backgroundImage: `url(${brokerPhoto})` }} />
                 <div>
@@ -125,10 +92,63 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
               <a
                 className="btnPrimary"
                 target="_blank"
+                rel="noopener noreferrer"
                 href={`https://wa.me/55${brokerPhone.replace(/\D/g, "")}?text=Olá, tenho interesse no imóvel: ${encodeURIComponent(property.title)}`}
               >
                 Falar no WhatsApp
               </a>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section className="section gallerySectionCompact">
+        <div className="container">
+          {gallery.length > 0 && (
+            <div className="detailGalleryBlock">
+              <div className="detailGalleryHead">
+                <div>
+                  <span className="eyebrow">Galeria do imóvel</span>
+                  <h3>Visualize as fotos com mais conforto</h3>
+                </div>
+                <p>Clique em qualquer imagem para ampliar, navegar pelas setas e visualizar as miniaturas.</p>
+              </div>
+              <ImageLightbox images={gallery} />
+            </div>
+          )}
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container detailBodyGrid">
+          <div className="detailContentStack">
+            <ExpandableInfo title="Descrição do imóvel" defaultOpen>
+              <p>{property.description || "Descrição em breve."}</p>
+            </ExpandableInfo>
+
+            <ExpandableInfo title="Características principais">
+              <p>
+                Imóvel localizado em {property.neighborhood || "São Roque"}, com foco em conforto,
+                localização e segurança.
+              </p>
+            </ExpandableInfo>
+
+            {floorPlans.length > 0 && (
+              <div className="floorPlanBlockRefined">
+                <h3>Plantas do imóvel</h3>
+                <p className="sectionText">Clique para ampliar as plantas disponíveis.</p>
+                <ImageLightbox images={floorPlans} classNamePrefix="floor" />
+              </div>
+            )}
+          </div>
+
+          <aside className="detailFactsPanel">
+            <h3>Informações rápidas</h3>
+            <div className="metricGrid detailFactsGrid">
+              {property.area && <div><strong>{property.area}</strong><span>Área</span></div>}
+              {!!property.bedrooms && property.bedrooms > 0 && <div><strong>{property.bedrooms}</strong><span>Quartos</span></div>}
+              {!!property.bathrooms && property.bathrooms > 0 && <div><strong>{property.bathrooms}</strong><span>Banheiros</span></div>}
+              {!!property.parking && property.parking > 0 && <div><strong>{property.parking}</strong><span>Vagas</span></div>}
             </div>
           </aside>
         </div>
