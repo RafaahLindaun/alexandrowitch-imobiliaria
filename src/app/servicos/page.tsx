@@ -1,0 +1,2 @@
+import Navbar from "../../components/Navbar";import Footer from "../../components/Footer";import Services from "../../components/Services";import ContactSection from "../../components/ContactSection";
+export default function ServicesPage(){return <main className="page"><Navbar/><section className="pageTop"><div className="container"><h1>Serviços</h1><p>Compra, venda, locação, administração de imóveis e administração de condomínios.</p></div></section><Services/><ContactSection/><Footer/></main>}
