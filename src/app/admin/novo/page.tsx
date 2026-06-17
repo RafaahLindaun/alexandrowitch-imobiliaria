@@ -22,7 +22,7 @@ export default async function NewPropertyPage() {
             <Link href="/admin" className="btnLight">← Voltar ao painel</Link>
           </div>
           <span className="adminPill">Modo Corretor</span>
-          <h1>Novo Imóvel</h1>
+          <h1>Novo anúncio</h1>
           <p>Cadastre informações, características e várias fotos do imóvel.</p>
         </div>
       </section>
