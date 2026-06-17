@@ -5,6 +5,7 @@ import SearchPanel from "../../components/SearchPanel";
 import { createClient } from "../../lib/supabase/server";
 import { Property } from "../../types/property";
 import { buildAvailableLocations } from "../../lib/availableLocations";
+import { getPropertyCode, normalizeSearchCode } from "../../lib/propertyCode";
 
 function onlyNumbers(value?: string) { return Number(String(value || "").replace(/\D/g, "")) || 0; }
 function priceToNumber(price?: string | null) { return Number(String(price || "").replace(/\D/g, "")) || 0; }
@@ -31,12 +32,14 @@ export default async function PropertiesPage({ searchParams }: { searchParams?: 
   const valorMin = onlyNumbers(params?.valorMin);
   const valorMax = onlyNumbers(params?.valorMax);
   const codigo = String(params?.codigo || "").trim();
+  const cleanCode = normalizeSearchCode(codigo);
   const properties = ((data || []) as Property[]).filter((property) => {
     const price = priceToNumber(property.price);
     if (valorMin && price < valorMin) return false;
     if (valorMax && price > valorMax) return false;
     if (codigo) {
-      const match = textIncludes(property.slug, codigo) || textIncludes(property.id, codigo) || textIncludes(property.title, codigo) || textIncludes(property.neighborhood, codigo) || textIncludes(property.city, codigo) || textIncludes(property.category, codigo);
+      const match = textIncludes(property.slug, codigo) || (cleanCode && getPropertyCode(property.id).includes(cleanCode)) ||
+        (cleanCode && normalizeSearchCode(property.id).includes(cleanCode)) || textIncludes(property.title, codigo) || textIncludes(property.neighborhood, codigo) || textIncludes(property.city, codigo) || textIncludes(property.category, codigo);
       if (!match) return false;
     }
     return true;

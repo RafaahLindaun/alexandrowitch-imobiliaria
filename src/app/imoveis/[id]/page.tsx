@@ -4,6 +4,7 @@ import ContactSection from "../../../components/ContactSection";
 import ExpandableInfo from "../../../components/ExpandableInfo";
 import ImageLightbox from "../../../components/ImageLightbox";
 import { createClient } from "../../../lib/supabase/server";
+import { getPropertyCode } from "../../../lib/propertyCode";
 import Link from "next/link";
 
 export default async function PropertyDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -53,6 +54,7 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
   const brokerPhone = property.broker_phone || "11974005163";
   const brokerName = property.broker_name || "Corretor Alexandrowitch";
   const brokerPhoto = property.broker_photo || "/logo-alexandrowitch.png";
+  const code = getPropertyCode(property.id);
 
   return (
     <main className="page propertyDetailPage">
@@ -62,7 +64,11 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
         <div className="propertyHeroOverlay" />
         <div className="container propertyHeroInner">
           <Link href="/imoveis" className="backToResults">← Voltar aos imóveis</Link>
-          <span className="statusBadge">{property.operation}</span>
+          <div className="heroPropertyBadges">
+            <span>{property.operation}</span>
+            <span>Cód. {code}</span>
+            <span>{property.status || "Disponível"}</span>
+          </div>
           <h1>{property.title}</h1>
           <p>{property.neighborhood || "Bairro não informado"} • {property.city}</p>
         </div>
@@ -70,11 +76,11 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
 
       <section className="propertyMainPremium">
         <div className="container">
-          <div className="propertySummaryCard">
+          <div className="propertySummaryCard srSummaryCard">
             <div>
               <span className="eyebrow">Imóvel selecionado</span>
               <h2>{property.price}</h2>
-              <p>{property.status || "Disponível"} • {property.category}</p>
+              <p>{property.category} • {property.neighborhood || property.city}</p>
             </div>
 
             <div className="propertyMetricBar">
@@ -86,26 +92,40 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
             </div>
           </div>
 
-          <div className="propertyContentPremium">
+          <div className="propertyContentPremium srDetailLayout">
             <div className="propertyLeftColumn">
               {gallery.length > 0 && (
-                <section className="propertyGalleryPremium">
+                <section className="propertyGalleryPremium srGalleryCard">
                   <div className="premiumSectionHead">
                     <div>
                       <span className="eyebrow">Galeria</span>
                       <h3>Fotos do imóvel</h3>
                     </div>
-                    <p>Clique na foto principal para abrir em tela cheia, navegar, compartilhar e ampliar.</p>
+                    <p>Clique nas fotos para abrir a galeria completa, trocar pelas setas, compartilhar e ver em tela cheia.</p>
                   </div>
 
                   <ImageLightbox images={gallery} />
                 </section>
               )}
 
-              <section className="propertyInfoPremium">
+              <section className="propertyInfoPremium srInfoCard">
+                <div className="srInfoHeader">
+                  <span className="eyebrow">Sobre este imóvel</span>
+                  <h3>Detalhes e características</h3>
+                </div>
+
                 <ExpandableInfo title="Descrição do imóvel" defaultOpen>
                   <p>{property.description || "Descrição em breve."}</p>
                 </ExpandableInfo>
+
+                <div className="srAmenityGrid">
+                  <div><strong>{property.area || "-"}</strong><span>Área</span></div>
+                  <div><strong>{property.bedrooms || 0}</strong><span>Dormitórios</span></div>
+                  <div><strong>{property.suites || 0}</strong><span>Suítes</span></div>
+                  <div><strong>{property.bathrooms || 0}</strong><span>Banheiros</span></div>
+                  <div><strong>{property.parking || 0}</strong><span>Vagas</span></div>
+                  <div><strong>{code}</strong><span>Código</span></div>
+                </div>
 
                 <ExpandableInfo title="Características principais">
                   <p>
@@ -129,9 +149,9 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
             </div>
 
             <aside className="propertyBrokerSticky">
-              <div className="brokerCardPremium">
+              <div className="brokerCardPremium srBrokerBox">
                 <span className="eyebrow">Atendimento</span>
-                <h3>Corretor responsável</h3>
+                <h3>Gostou deste imóvel?</h3>
 
                 <div className="brokerTop">
                   <div className="brokerPhoto" style={{ backgroundImage: `url(${brokerPhoto})` }} />
@@ -145,21 +165,21 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
                   className="btnPrimary"
                   target="_blank"
                   rel="noopener noreferrer"
-                  href={`https://wa.me/55${brokerPhone.replace(/\D/g, "")}?text=Olá, tenho interesse no imóvel: ${encodeURIComponent(property.title)}`}
+                  href={`https://wa.me/55${brokerPhone.replace(/\D/g, "")}?text=Olá, tenho interesse no imóvel de código ${code}: ${encodeURIComponent(property.title)}`}
                 >
-                  Falar no WhatsApp
+                  Chamar no WhatsApp
                 </a>
 
                 <a
                   className="btnLight"
-                  href={`mailto:alexandrowitch.imobiliaria@gmail.com?subject=${encodeURIComponent("Interesse no imóvel " + property.title)}&body=${encodeURIComponent("Olá! Tenho interesse neste imóvel e gostaria de receber mais informações.")}`}
+                  href={`mailto:alexandrowitch.imobiliaria@gmail.com?subject=${encodeURIComponent("Interesse no imóvel código " + code)}&body=${encodeURIComponent("Olá! Tenho interesse no imóvel de código " + code + " e gostaria de receber mais informações.")}`}
                 >
                   Enviar e-mail
                 </a>
 
                 <div className="brokerMiniInfo">
-                  <span>Código</span>
-                  <strong>#{String(property.id).slice(0, 8)}</strong>
+                  <span>Código do imóvel</span>
+                  <strong>{code}</strong>
                 </div>
               </div>
             </aside>

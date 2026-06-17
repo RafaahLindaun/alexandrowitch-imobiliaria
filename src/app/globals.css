@@ -2986,3 +2986,429 @@ html, body {
     bottom: 12px;
   }
 }
+
+/* V13 - código pesquisável + galeria fixa estilo imobiliária */
+.heroPropertyBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.heroPropertyBadges span {
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.24);
+  color: white;
+  padding: 9px 13px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.srSummaryCard {
+  border-radius: 26px;
+  overflow: hidden;
+}
+
+.srDetailLayout {
+  align-items: start;
+}
+
+.srGalleryCard,
+.srInfoCard,
+.srBrokerBox {
+  border-radius: 26px;
+}
+
+.srInfoHeader h3 {
+  margin: 5px 0 20px;
+  color: var(--azul);
+  font-family: Georgia, serif;
+  font-size: 36px;
+  font-weight: 400;
+}
+
+.srAmenityGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 18px 0 22px;
+}
+
+.srAmenityGrid div {
+  background: #f8f5ef;
+  border: 1px solid #eee4d4;
+  padding: 18px;
+  border-radius: 18px;
+}
+
+.srAmenityGrid strong {
+  display: block;
+  color: var(--azul);
+  font-size: 20px;
+}
+
+.srAmenityGrid span {
+  display: block;
+  margin-top: 5px;
+  color: #6b7280;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+}
+
+.propertyCode {
+  white-space: nowrap;
+}
+
+.srBrokerBox .btnPrimary,
+.srBrokerBox .btnLight {
+  justify-content: center;
+}
+
+/* Galeria preview */
+.gallery {
+  display: grid !important;
+  grid-template-columns: 1.35fr .8fr .8fr !important;
+  grid-template-rows: 235px 235px !important;
+  gap: 12px !important;
+  margin-top: 0 !important;
+}
+
+.galleryItem {
+  height: 100% !important;
+  min-height: 0 !important;
+  border-radius: 20px !important;
+  background-size: cover !important;
+  background-position: center !important;
+  position: relative;
+  overflow: hidden;
+  border: 0 !important;
+}
+
+.galleryItem:first-child {
+  grid-row: span 2 !important;
+  min-height: 0 !important;
+}
+
+.galleryMainLabel,
+.galleryMoreOverlay {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  z-index: 2;
+  background: rgba(7,17,40,.78);
+  color: white;
+  border: 1px solid rgba(255,255,255,.26);
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.galleryMoreOverlay {
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  font-size: 18px;
+  background: rgba(7,17,40,.66);
+}
+
+/* Galeria aberta: reset completo para não abrir solta embaixo */
+.premiumLightbox,
+.premiumLightboxSurface,
+.googleGalleryTopbar,
+.googleGalleryBody,
+.googleThumbStrip,
+.premiumLightboxChrome,
+.premiumLightboxBody,
+.premiumImageStage,
+.premiumLightboxTop {
+  all: unset;
+}
+
+.srGalleryOverlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147483000 !important;
+  width: 100vw !important;
+  height: 100dvh !important;
+  background: #050914 !important;
+  color: white !important;
+  display: grid !important;
+  grid-template-rows: 70px minmax(0, 1fr) 102px !important;
+  overflow: hidden !important;
+  overscroll-behavior: contain !important;
+  touch-action: none !important;
+}
+
+.srGalleryHeader {
+  height: 70px;
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 0 18px;
+  background: rgba(5,9,20,.98);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  box-sizing: border-box;
+}
+
+.srGalleryClose {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(255,255,255,.09);
+  color: white;
+  font-size: 34px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.srGalleryCounter span {
+  display: block;
+  color: rgba(255,255,255,.62);
+  font-size: 12px;
+}
+
+.srGalleryCounter strong {
+  display: block;
+  margin-top: 2px;
+  color: white;
+  font-size: 15px;
+}
+
+.srGalleryTools {
+  display: flex;
+  gap: 10px;
+}
+
+.srGalleryTools button {
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(255,255,255,.08);
+  color: white;
+  padding: 0 14px;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.srGalleryTools svg {
+  width: 18px;
+  height: 18px;
+}
+
+.srGalleryMain {
+  position: relative;
+  min-height: 0;
+  min-width: 0;
+  display: grid;
+  place-items: center;
+  padding: 14px 76px;
+  box-sizing: border-box;
+}
+
+.srGalleryImageStage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  min-width: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.srGalleryImageStage > img:not(.srGalleryWatermark) {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  cursor: zoom-in;
+  user-select: none;
+  transition: transform .2s ease;
+}
+
+.srGalleryImageStage.zoomed > img:not(.srGalleryWatermark) {
+  transform: scale(1.65);
+  cursor: zoom-out;
+}
+
+.srGalleryWatermark {
+  position: absolute;
+  right: 22px;
+  bottom: 18px;
+  width: min(190px, 22vw);
+  max-height: 90px;
+  opacity: .22;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.srGalleryArrow {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 70px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(255,255,255,.09);
+  color: white;
+  font-size: 52px;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.srPrev {
+  left: 16px;
+}
+
+.srNext {
+  right: 16px;
+}
+
+.srGalleryThumbs {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  overflow-x: auto;
+  padding: 12px 18px 18px;
+  background: rgba(5,9,20,.98);
+  border-top: 1px solid rgba(255,255,255,.08);
+  box-sizing: border-box;
+}
+
+.srGalleryThumbs button {
+  width: 112px;
+  min-width: 112px;
+  height: 72px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  overflow: hidden;
+  padding: 0;
+  background: rgba(255,255,255,.08);
+  opacity: .65;
+  cursor: pointer;
+}
+
+.srGalleryThumbs button.activeThumb {
+  border-color: var(--dourado);
+  opacity: 1;
+}
+
+.srGalleryThumbs img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media(max-width: 900px) {
+  .srAmenityGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery {
+    display: flex !important;
+    overflow-x: auto;
+    grid-template-columns: unset !important;
+    grid-template-rows: unset !important;
+    gap: 10px !important;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 8px;
+  }
+
+  .galleryItem,
+  .galleryItem:first-child {
+    min-width: 86vw !important;
+    height: 245px !important;
+    scroll-snap-align: start;
+  }
+
+  .srGalleryOverlay {
+    grid-template-rows: 62px minmax(0, 1fr) 82px !important;
+  }
+
+  .srGalleryHeader {
+    height: 62px;
+    grid-template-columns: 46px 1fr auto;
+    gap: 8px;
+    padding: 0 10px;
+  }
+
+  .srGalleryClose {
+    width: 40px;
+    height: 40px;
+  }
+
+  .srGalleryTools button {
+    width: 40px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .srGalleryTools button span {
+    display: none;
+  }
+
+  .srGalleryMain {
+    padding: 8px 10px;
+  }
+
+  .srGalleryImageStage > img:not(.srGalleryWatermark) {
+    cursor: default;
+  }
+
+  .srGalleryImageStage.zoomed > img:not(.srGalleryWatermark) {
+    transform: none;
+  }
+
+  .srGalleryArrow {
+    width: 40px;
+    height: 54px;
+    font-size: 38px;
+    background: rgba(0,0,0,.36);
+  }
+
+  .srPrev {
+    left: 8px;
+  }
+
+  .srNext {
+    right: 8px;
+  }
+
+  .srGalleryThumbs {
+    padding: 8px 10px 12px;
+  }
+
+  .srGalleryThumbs button {
+    width: 68px;
+    min-width: 68px;
+    height: 50px;
+  }
+
+  .srGalleryWatermark {
+    width: min(140px, 38vw);
+    right: 12px;
+    bottom: 12px;
+  }
+}

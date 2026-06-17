@@ -91,7 +91,7 @@ export default function SearchPanel({
             <div className="searchField"><label>Vagas</label><select name="vagas" defaultValue={initial.vagas || ""}><option value="">Qualquer</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option></select></div>
             <div className="searchField"><label>Valor mín.</label><input name="valorMin" inputMode="numeric" placeholder="500000" defaultValue={initial.valorMin || ""} /></div>
             <div className="searchField"><label>Valor máx.</label><input name="valorMax" inputMode="numeric" placeholder="1500000" defaultValue={initial.valorMax || ""} /></div>
-            <div className="searchField"><label>Código ou nome</label><input name="codigo" placeholder="Vila Junqueira" defaultValue={initial.codigo || ""} /></div>
+            <div className="searchField"><label>Código ou nome</label><input name="codigo" placeholder="Código, bairro ou nome" defaultValue={initial.codigo || ""} /></div>
           </div>
         </details>
 
