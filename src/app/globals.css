@@ -4444,3 +4444,314 @@ a, button, .propertyCard, .adminPropertyCard, .homeActionCard, .refinedQuickCard
     animation-duration: .001ms !important;
   }
 }
+
+/* V16 - hero galeria na página do imóvel */
+.heroGalleryCarousel {
+  min-height: 78vh;
+  overflow: hidden;
+  background: #071128;
+  display: grid;
+  align-items: end;
+  position: relative;
+  isolation: isolate;
+}
+
+.heroGalleryImage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.04);
+  opacity: 0;
+  animation: heroImageReveal .78s cubic-bezier(.2,.85,.2,1) forwards;
+  will-change: transform, opacity;
+}
+
+.heroDirection-next .heroGalleryImage {
+  animation-name: heroImageRevealNext;
+}
+
+.heroDirection-prev .heroGalleryImage {
+  animation-name: heroImageRevealPrev;
+}
+
+@keyframes heroImageReveal {
+  from {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes heroImageRevealNext {
+  from {
+    opacity: 0;
+    transform: translateX(38px) scale(1.08);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1.04);
+  }
+}
+
+@keyframes heroImageRevealPrev {
+  from {
+    opacity: 0;
+    transform: translateX(-38px) scale(1.08);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1.04);
+  }
+}
+
+.heroGalleryOverlay {
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(7,17,40,.08), rgba(7,17,40,.78)),
+    linear-gradient(90deg, rgba(7,17,40,.78), rgba(7,17,40,.18) 58%, rgba(7,17,40,.5));
+  transition: opacity .45s ease;
+}
+
+.heroGalleryInner {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 34px;
+  align-items: end;
+  padding-bottom: 72px;
+}
+
+.heroTextBlock {
+  transition: opacity .42s ease, transform .42s ease, filter .42s ease;
+}
+
+.heroGalleryCarousel.isGalleryMode .heroTextBlock {
+  opacity: .08;
+  transform: translateY(22px) scale(.985);
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+.heroGalleryCarousel.isGalleryMode .heroGalleryOverlay {
+  opacity: .66;
+}
+
+.heroGalleryCarousel.isGalleryMode .heroGalleryImage {
+  transform: scale(1.015);
+}
+
+.heroGalleryDock {
+  justify-self: end;
+  width: 100%;
+  max-width: 360px;
+  background: rgba(7,17,40,.58);
+  border: 1px solid rgba(201,168,106,.32);
+  border-radius: 28px;
+  padding: 18px;
+  color: white;
+  box-shadow: 0 24px 60px rgba(0,0,0,.24);
+  backdrop-filter: blur(16px);
+  opacity: .88;
+  transform: translateY(10px);
+  transition: opacity .35s ease, transform .35s ease, background .35s ease;
+}
+
+.heroGalleryCarousel.isGalleryMode .heroGalleryDock,
+.heroGalleryDock:hover {
+  opacity: 1;
+  transform: translateY(0);
+  background: rgba(7,17,40,.72);
+}
+
+.heroGalleryDock span {
+  display: block;
+  color: var(--dourado);
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.heroGalleryDock strong {
+  display: block;
+  margin-top: 4px;
+  font-family: Georgia, serif;
+  font-size: 26px;
+  font-weight: 400;
+}
+
+.heroThumbs {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.heroThumbs button {
+  height: 66px;
+  border: 2px solid transparent;
+  border-radius: 14px;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  opacity: .72;
+  transition: opacity .2s ease, transform .2s ease, border-color .2s ease;
+}
+
+.heroThumbs button:hover,
+.heroThumbs .activeHeroThumb {
+  opacity: 1;
+  border-color: var(--dourado);
+  transform: translateY(-2px);
+}
+
+.heroMorePhotos {
+  margin-top: 10px;
+  color: rgba(255,255,255,.66) !important;
+  letter-spacing: .08em !important;
+}
+
+.heroSideArrow {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 62px;
+  height: 96px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.24);
+  background: rgba(7,17,40,.42);
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 68px;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: transform .22s ease, background .22s ease, border-color .22s ease, opacity .22s ease;
+}
+
+.heroSideArrow:hover {
+  background: rgba(7,17,40,.68);
+  border-color: rgba(201,168,106,.55);
+}
+
+.heroSideArrow:active {
+  transform: translateY(-50%) scale(.96);
+}
+
+.heroSideArrowLeft {
+  left: 26px;
+}
+
+.heroSideArrowRight {
+  right: 26px;
+}
+
+.heroGalleryHint {
+  position: absolute;
+  z-index: 5;
+  right: 34px;
+  bottom: 28px;
+  min-height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(201,168,106,.42);
+  background: rgba(7,17,40,.62);
+  color: white;
+  padding: 0 18px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: 11px;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: transform .2s ease, background .2s ease;
+}
+
+.heroGalleryHint:hover {
+  transform: translateY(-2px);
+  background: rgba(7,17,40,.78);
+}
+
+.propertyHeroPremium h1,
+.propertyHeroPremium p,
+.backToResults,
+.heroPropertyBadges {
+  position: relative;
+  z-index: 2;
+}
+
+@media(max-width: 900px) {
+  .heroGalleryCarousel {
+    min-height: 72vh;
+  }
+
+  .heroGalleryInner {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 116px 16px 86px;
+  }
+
+  .heroGalleryCarousel.isGalleryMode .heroTextBlock {
+    opacity: .18;
+    transform: translateY(12px) scale(.99);
+  }
+
+  .heroSideArrow {
+    width: 46px;
+    height: 66px;
+    font-size: 44px;
+    background: rgba(7,17,40,.46);
+  }
+
+  .heroSideArrowLeft {
+    left: 10px;
+  }
+
+  .heroSideArrowRight {
+    right: 10px;
+  }
+
+  .heroGalleryDock {
+    justify-self: stretch;
+    max-width: none;
+    border-radius: 22px;
+    padding: 14px;
+  }
+
+  .heroThumbs {
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    padding-bottom: 4px;
+  }
+
+  .heroThumbs button {
+    min-width: 74px;
+    height: 56px;
+  }
+
+  .heroGalleryHint {
+    right: 16px;
+    bottom: 18px;
+    font-size: 10px;
+    min-height: 40px;
+    padding: 0 14px;
+  }
+}
+
+@media(max-width: 430px) {
+  .heroGalleryInner {
+    padding-bottom: 92px;
+  }
+
+  .heroGalleryDock {
+    max-height: 152px;
+  }
+}

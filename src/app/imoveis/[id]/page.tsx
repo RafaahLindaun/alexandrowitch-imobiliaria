@@ -3,6 +3,7 @@ import Footer from "../../../components/Footer";
 import ContactSection from "../../../components/ContactSection";
 import ExpandableInfo from "../../../components/ExpandableInfo";
 import ImageLightbox from "../../../components/ImageLightbox";
+import PropertyHeroCarousel from "../../../components/PropertyHeroCarousel";
 import { createClient } from "../../../lib/supabase/server";
 import { getPropertyCode } from "../../../lib/propertyCode";
 import Link from "next/link";
@@ -60,19 +61,17 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
     <main className="page propertyDetailPage">
       <Navbar />
 
-      <section className="propertyHeroPremium" style={{ backgroundImage: `url(${heroImage})` }}>
-        <div className="propertyHeroOverlay" />
-        <div className="container propertyHeroInner">
-          <Link href="/imoveis" className="backToResults">← Voltar aos imóveis</Link>
-          <div className="heroPropertyBadges">
-            <span>{property.operation}</span>
-            <span>Cód. {code}</span>
-            <span>{property.status || "Disponível"}</span>
-          </div>
-          <h1>{property.title}</h1>
-          <p>{property.neighborhood || "Bairro não informado"} • {property.city}</p>
-        </div>
-      </section>
+      <PropertyHeroCarousel
+        property={{
+          title: property.title,
+          operation: property.operation,
+          status: property.status,
+          neighborhood: property.neighborhood,
+          city: property.city,
+        }}
+        images={gallery.length ? gallery : [heroImage]}
+        code={code}
+      />
 
       <section className="propertyMainPremium">
         <div className="container">
