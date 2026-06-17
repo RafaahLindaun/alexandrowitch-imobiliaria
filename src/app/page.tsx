@@ -1,2 +1,35 @@
-import Navbar from "../components/Navbar";import Hero from "../components/Hero";import FeaturedProperties from "../components/FeaturedProperties";import Services from "../components/Services";import ContactSection from "../components/ContactSection";import Footer from "../components/Footer";import Reveal from "../components/Reveal";import SearchPanel from "../components/SearchPanel";import HomeActionCards from "../components/HomeActionCards";import QuickBrowse from "../components/QuickBrowse";import RequestPropertySection from "../components/RequestPropertySection";
-export default function Home(){return <main className="page"><Navbar/><Hero/><HomeActionCards/><Reveal><section className="section homeSearchSection"><div className="container"><SearchPanel variant="hero"/></div></section></Reveal><Reveal><FeaturedProperties/></Reveal><Reveal><QuickBrowse/></Reveal><Reveal><Services/></Reveal><Reveal><section className="section"><div className="container aboutBand"><div className="aboutImage parallaxSoft"/><div><div className="eyebrow">Sobre a Alexandrowitch Imobiliária e Administradora</div><h2 className="sectionTitle">Tradição familiar no mercado imobiliário desde 1964.</h2><p className="sectionText">Somos de família tradicional no ramo imobiliário de São Paulo, com atuação desde 1964. Especializadas em compra, venda, locação e administração, conduzimos negociações com transparência, ética e acompanhamento próximo.</p><a href="/sobre" className="btnDark">Conheça nossa história</a></div></div></section></Reveal><Reveal><RequestPropertySection/></Reveal><Reveal><ContactSection/></Reveal><Footer/></main>}
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
+import FeaturedProperties from "../components/FeaturedProperties";
+import Services from "../components/Services";
+import ContactSection from "../components/ContactSection";
+import Footer from "../components/Footer";
+import Reveal from "../components/Reveal";
+import SearchPanel from "../components/SearchPanel";
+import HomeActionCards from "../components/HomeActionCards";
+import QuickBrowse from "../components/QuickBrowse";
+import RequestPropertySection from "../components/RequestPropertySection";
+import { createClient } from "../lib/supabase/server";
+import { buildAvailableLocations } from "../lib/availableLocations";
+
+export default async function Home() {
+  const supabase = await createClient();
+  const { data: locations } = await supabase.from("properties").select("city,neighborhood");
+  const availableLocations = buildAvailableLocations(locations);
+
+  return (
+    <main className="page">
+      <Navbar />
+      <Hero />
+      <HomeActionCards />
+      <Reveal><section className="section homeSearchSection"><div className="container"><SearchPanel variant="hero" availableLocations={availableLocations} /></div></section></Reveal>
+      <Reveal><FeaturedProperties /></Reveal>
+      <Reveal><QuickBrowse /></Reveal>
+      <Reveal><Services /></Reveal>
+      <Reveal><section className="section"><div className="container aboutBand"><div className="aboutImage parallaxSoft" /><div><div className="eyebrow">Sobre a Alexandrowitch Imobiliária e Administradora</div><h2 className="sectionTitle">Tradição familiar no mercado imobiliário desde 1964.</h2><p className="sectionText">Somos de família tradicional no ramo imobiliário de São Paulo, com atuação desde 1964. Especializadas em compra, venda, locação e administração, conduzimos negociações com transparência, ética e acompanhamento próximo.</p><a href="/sobre" className="btnDark">Conheça nossa história</a></div></div></section></Reveal>
+      <Reveal><RequestPropertySection /></Reveal>
+      <Reveal><ContactSection /></Reveal>
+      <Footer />
+    </main>
+  );
+}
