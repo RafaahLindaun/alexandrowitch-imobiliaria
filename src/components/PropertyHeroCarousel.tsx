@@ -94,31 +94,13 @@ export default function PropertyHeroCarousel({
           <h1>{property.title}</h1>
           <p>{property.neighborhood || "Bairro não informado"} • {property.city}</p>
         </div>
-
-        <div className="heroGalleryDock">
-          <div>
-            <span>Galeria do imóvel</span>
-            <strong>{index + 1} / {safeImages.length}</strong>
-          </div>
-
-          <div className="heroThumbs">
-            {safeImages.slice(0, 6).map((image, thumbIndex) => (
-              <button
-                key={`${image}-${thumbIndex}`}
-                type="button"
-                className={thumbIndex === index ? "activeHeroThumb" : ""}
-                style={{ backgroundImage: `url(${image})` }}
-                onClick={() => goTo(thumbIndex, thumbIndex > index ? "next" : "prev")}
-                aria-label={`Ver foto ${thumbIndex + 1}`}
-              />
-            ))}
-          </div>
-
-          {safeImages.length > 6 && (
-            <span className="heroMorePhotos">+{safeImages.length - 6} fotos</span>
-          )}
-        </div>
       </div>
+
+      {safeImages.length > 1 && (
+        <div className="heroGalleryCounterPill">
+          {index + 1} / {safeImages.length}
+        </div>
+      )}
 
       <button
         type="button"
