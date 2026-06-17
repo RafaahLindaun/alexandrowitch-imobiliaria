@@ -2365,3 +2365,624 @@ html, body {
 .emailIcon { color:#111 !important; font-weight:900; font-size:20px; }
 
 @media(max-width:900px){ .floatingContact{right:16px;bottom:16px}.premiumWhatsButton{width:60px;height:60px}.premiumWhatsButton .whatsappSvg{width:34px;height:34px}.premiumFloatPanel{right:0;bottom:76px;width:min(360px,calc(100vw - 28px));border-radius:26px;padding:18px}.floatContactOption{min-height:64px} }
+
+/* V12 - correção de contraste da busca e página de imóvel premium */
+.homeSearchSection .premiumSearchShell,
+.heroSearch,
+.compactPremiumSearch {
+  background:
+    radial-gradient(circle at 10% 0%, rgba(201,168,106,.12), transparent 35%),
+    linear-gradient(135deg, #0d1b3e, #13295c) !important;
+  color: #ffffff !important;
+  border-color: rgba(201,168,106,.42) !important;
+}
+
+.homeSearchSection .premiumSearchHead h2,
+.heroSearch .premiumSearchHead h2,
+.compactPremiumSearch .premiumSearchHead h2 {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+.homeSearchSection .premiumSearchHead p,
+.heroSearch .premiumSearchHead p,
+.compactPremiumSearch .premiumSearchHead p {
+  color: rgba(255,255,255,.82) !important;
+  opacity: 1 !important;
+}
+
+.homeSearchSection .eyebrow,
+.heroSearch .eyebrow,
+.compactPremiumSearch .eyebrow {
+  color: #e2c17f !important;
+}
+
+.homeSearchSection .luxuryDetails,
+.heroSearch .luxuryDetails,
+.compactPremiumSearch .luxuryDetails {
+  background: rgba(255,255,255,.08) !important;
+  border-color: rgba(201,168,106,.35) !important;
+}
+
+.homeSearchSection .luxuryDetails summary,
+.heroSearch .luxuryDetails summary,
+.compactPremiumSearch .luxuryDetails summary {
+  color: #ffffff !important;
+}
+
+.propertyHeroPremium {
+  min-height: 72vh;
+  display: flex;
+  align-items: end;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 150px 24px 72px;
+}
+
+.propertyHeroOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(7,17,40,.1), rgba(7,17,40,.86)),
+    linear-gradient(90deg, rgba(7,17,40,.78), rgba(7,17,40,.18));
+}
+
+.propertyHeroInner {
+  position: relative;
+  z-index: 2;
+}
+
+.backToResults {
+  display: inline-flex;
+  margin-bottom: 20px;
+  color: rgba(255,255,255,.86);
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 999px;
+  padding: 10px 14px;
+  backdrop-filter: blur(8px);
+}
+
+.propertyHeroPremium h1 {
+  max-width: 980px;
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(42px, 6vw, 86px);
+  line-height: .96;
+  margin: 14px 0;
+}
+
+.propertyHeroPremium p {
+  font-size: 19px;
+  color: rgba(255,255,255,.82);
+}
+
+.propertyMainPremium {
+  background:
+    linear-gradient(180deg, #f8f5ef, #ffffff 32%);
+  padding: 0 24px 90px;
+}
+
+.propertySummaryCard {
+  transform: translateY(-42px);
+  background: white;
+  border: 1px solid rgba(201,168,106,.32);
+  box-shadow: 0 28px 70px rgba(13,27,62,.13);
+  padding: 30px;
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: 26px;
+  align-items: center;
+}
+
+.propertySummaryCard h2 {
+  margin: 6px 0 8px;
+  color: var(--azul);
+  font-family: Georgia, serif;
+  font-size: clamp(40px, 5vw, 66px);
+  font-weight: 400;
+}
+
+.propertySummaryCard p {
+  margin: 0;
+  color: #5d6472;
+}
+
+.propertyMetricBar {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border: 1px solid #eee4d4;
+}
+
+.propertyMetricBar div {
+  min-height: 90px;
+  padding: 16px 12px;
+  display: grid;
+  align-content: center;
+  border-right: 1px solid #eee4d4;
+}
+
+.propertyMetricBar div:last-child {
+  border-right: 0;
+}
+
+.propertyMetricBar strong {
+  color: var(--azul);
+  font-size: 20px;
+}
+
+.propertyMetricBar span {
+  color: #6b7280;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: .12em;
+  margin-top: 6px;
+}
+
+.propertyContentPremium {
+  margin-top: -10px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 34px;
+  align-items: start;
+}
+
+.propertyLeftColumn {
+  display: grid;
+  gap: 30px;
+}
+
+.propertyGalleryPremium,
+.propertyInfoPremium,
+.brokerCardPremium {
+  background: #fff;
+  border: 1px solid rgba(201,168,106,.28);
+  box-shadow: 0 18px 45px rgba(13,27,62,.08);
+  padding: 26px;
+}
+
+.premiumSectionHead {
+  display: flex;
+  justify-content: space-between;
+  gap: 22px;
+  align-items: end;
+  margin-bottom: 18px;
+}
+
+.premiumSectionHead h3 {
+  margin: 4px 0 0;
+  color: var(--azul);
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-size: 36px;
+}
+
+.premiumSectionHead p {
+  max-width: 480px;
+  color: #5d6472;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.propertyBrokerSticky {
+  position: sticky;
+  top: 110px;
+}
+
+.brokerCardPremium {
+  padding: 28px;
+}
+
+.brokerCardPremium h3 {
+  margin: 6px 0 20px;
+  color: var(--azul);
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-size: 30px;
+}
+
+.brokerCardPremium .brokerTop {
+  background: #f8f5ef;
+  border: 1px solid #eee4d4;
+  padding: 16px;
+  border-radius: 20px;
+  margin-bottom: 18px;
+}
+
+.brokerCardPremium .brokerPhoto {
+  width: 74px;
+  height: 74px;
+  border-radius: 999px;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid var(--dourado);
+}
+
+.brokerCardPremium strong {
+  color: var(--azul);
+}
+
+.brokerCardPremium p {
+  color: #5d6472;
+  margin: 5px 0 0;
+}
+
+.brokerCardPremium .btnPrimary,
+.brokerCardPremium .btnLight {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.brokerMiniInfo {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid #eee4d4;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: #6b7280;
+}
+
+.brokerMiniInfo strong {
+  color: var(--azul);
+}
+
+.gallery {
+  display: grid !important;
+  grid-template-columns: 1.4fr .8fr .8fr !important;
+  grid-template-rows: 220px 220px !important;
+  gap: 10px !important;
+  margin-top: 0 !important;
+}
+
+.galleryItem {
+  min-height: auto !important;
+  height: 100% !important;
+  border-radius: 18px !important;
+  background-size: cover !important;
+  background-position: center !important;
+  border: 0 !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.galleryItem:first-child {
+  grid-row: span 2 !important;
+  min-height: auto !important;
+}
+
+.galleryMainLabel,
+.galleryMoreOverlay {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  background: rgba(7,17,40,.72);
+  color: white;
+  border: 1px solid rgba(255,255,255,.26);
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.galleryMoreOverlay {
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: rgba(7,17,40,.62);
+  font-size: 18px;
+}
+
+.premiumLightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: #0b1020;
+  color: white;
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
+.premiumLightboxSurface {
+  height: 100dvh;
+  display: grid;
+  grid-template-rows: 72px minmax(0, 1fr) 106px;
+}
+
+.googleGalleryTopbar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 18px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  background: rgba(11,16,32,.96);
+}
+
+.googleIconButton {
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(255,255,255,.08);
+  color: white;
+  font-size: 34px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.googleGalleryTitle span {
+  display: block;
+  color: rgba(255,255,255,.64);
+  font-size: 12px;
+}
+
+.googleGalleryTitle strong {
+  display: block;
+  color: white;
+  font-size: 15px;
+  margin-top: 3px;
+}
+
+.googleGalleryActions {
+  display: flex;
+  gap: 10px;
+}
+
+.googleActionButton {
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(255,255,255,.08);
+  color: white;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.googleActionButton svg {
+  width: 18px;
+  height: 18px;
+}
+
+.googleGalleryBody {
+  position: relative;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  padding: 16px 78px;
+}
+
+.googleImageStage {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.googleImageStage img:not(.premiumWatermarkLogo) {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  cursor: zoom-in;
+  transition: transform .2s ease;
+  user-select: none;
+}
+
+.googleImageStage img.isZoomed:not(.premiumWatermarkLogo) {
+  transform: scale(1.85);
+  cursor: zoom-out;
+}
+
+.googleGalleryArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+  width: 54px;
+  height: 72px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(255,255,255,.08);
+  color: white;
+  font-size: 54px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.galleryPrev {
+  left: 18px;
+}
+
+.galleryNext {
+  right: 18px;
+}
+
+.googleThumbStrip {
+  min-height: 0;
+  padding: 12px 18px 18px;
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  border-top: 1px solid rgba(255,255,255,.08);
+  background: rgba(11,16,32,.96);
+}
+
+.googleThumbStrip button {
+  width: 112px;
+  min-width: 112px;
+  height: 74px;
+  padding: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  background: rgba(255,255,255,.08);
+  opacity: .68;
+  cursor: pointer;
+}
+
+.googleThumbStrip button.activeThumb {
+  border-color: var(--dourado);
+  opacity: 1;
+}
+
+.googleThumbStrip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.premiumWatermarkLogo {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  width: min(190px, 22vw);
+  opacity: .22;
+  pointer-events: none;
+  object-fit: contain;
+}
+
+@media(max-width:900px) {
+  .propertyHeroPremium {
+    min-height: 62vh;
+    padding: 120px 18px 54px;
+  }
+
+  .propertyMainPremium {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .propertySummaryCard {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    transform: translateY(-28px);
+  }
+
+  .propertyMetricBar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .propertyMetricBar div {
+    border-bottom: 1px solid #eee4d4;
+  }
+
+  .propertyContentPremium {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .propertyBrokerSticky {
+    position: static;
+  }
+
+  .premiumSectionHead {
+    display: block;
+  }
+
+  .premiumSectionHead h3 {
+    font-size: 28px;
+  }
+
+  .propertyGalleryPremium,
+  .propertyInfoPremium,
+  .brokerCardPremium {
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .gallery {
+    display: flex !important;
+    overflow-x: auto;
+    gap: 10px !important;
+    grid-template-columns: unset !important;
+    grid-template-rows: unset !important;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 8px;
+  }
+
+  .galleryItem,
+  .galleryItem:first-child {
+    min-width: 86vw !important;
+    height: 245px !important;
+    scroll-snap-align: start;
+  }
+
+  .premiumLightboxSurface {
+    height: 100dvh;
+    grid-template-rows: 62px minmax(0, 1fr) 86px;
+  }
+
+  .googleGalleryTopbar {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+
+  .googleIconButton {
+    width: 42px;
+    height: 42px;
+  }
+
+  .googleActionButton span {
+    display: none;
+  }
+
+  .googleActionButton {
+    width: 42px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .googleGalleryBody {
+    padding: 8px 10px 12px;
+  }
+
+  .googleImageStage img:not(.premiumWatermarkLogo) {
+    transform: none !important;
+    cursor: default;
+  }
+
+  .googleGalleryArrow {
+    width: 40px;
+    height: 56px;
+    font-size: 38px;
+    background: rgba(0,0,0,.32);
+  }
+
+  .galleryPrev {
+    left: 8px;
+  }
+
+  .galleryNext {
+    right: 8px;
+  }
+
+  .googleThumbStrip {
+    padding: 8px 10px 14px;
+  }
+
+  .googleThumbStrip button {
+    width: 72px;
+    min-width: 72px;
+    height: 54px;
+  }
+
+  .premiumWatermarkLogo {
+    width: min(140px, 38vw);
+    right: 12px;
+    bottom: 12px;
+  }
+}

@@ -39,118 +39,131 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
     .eq("property_id", property.id)
     .order("created_at", { ascending: true });
 
-  const gallery = [property.cover_image, ...((images || []).map((image) => image.image_url))]
-    .filter(Boolean) as string[];
+  const gallery = [
+    property.cover_image,
+    ...((images || []).map((image) => image.image_url)),
+  ].filter(Boolean) as string[];
 
   const floorPlans = (property.floor_plan_images || []).filter(Boolean) as string[];
-  const heroImage = property.cover_image || gallery[0] || "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1600&auto=format&fit=crop";
+  const heroImage =
+    property.cover_image ||
+    gallery[0] ||
+    "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1600&auto=format&fit=crop";
+
   const brokerPhone = property.broker_phone || "11974005163";
   const brokerName = property.broker_name || "Corretor Alexandrowitch";
   const brokerPhoto = property.broker_photo || "/logo-alexandrowitch.png";
 
   return (
-    <main className="page">
+    <main className="page propertyDetailPage">
       <Navbar />
 
-      <section className="detailHero" style={{ backgroundImage: `url(${heroImage})` }}>
-        <div className="detailHeroContent">
+      <section className="propertyHeroPremium" style={{ backgroundImage: `url(${heroImage})` }}>
+        <div className="propertyHeroOverlay" />
+        <div className="container propertyHeroInner">
+          <Link href="/imoveis" className="backToResults">← Voltar aos imóveis</Link>
           <span className="statusBadge">{property.operation}</span>
           <h1>{property.title}</h1>
-          <p>{property.neighborhood || "São Roque"} • {property.city}</p>
+          <p>{property.neighborhood || "Bairro não informado"} • {property.city}</p>
         </div>
       </section>
 
-      <section className="section detailSectionTight">
-        <div className="container detailIntroGrid">
-          <div>
-            <div className="detailPriceRow">
-              <h2 className="sectionTitle">{property.price}</h2>
-            </div>
-
-            <div className="detailChipGrid">
-              <span>{property.status || "Disponível"}</span>
-              <span>{property.category}</span>
-              {property.area && <span>{property.area}</span>}
-              {!!property.bedrooms && property.bedrooms > 0 && <span>{property.bedrooms} dormitórios</span>}
-              {!!property.suites && property.suites > 0 && <span>{property.suites} suítes</span>}
-              {!!property.bathrooms && property.bathrooms > 0 && <span>{property.bathrooms} banheiros</span>}
-              {!!property.parking && property.parking > 0 && <span>{property.parking} vagas</span>}
-            </div>
-          </div>
-
-          <aside className="sidebarBox luxurySidebarBox">
-            <h3>Corretor responsável</h3>
-            <div className="brokerCard brokerCardRefined">
-              <div className="brokerTop">
-                <div className="brokerPhoto" style={{ backgroundImage: `url(${brokerPhoto})` }} />
-                <div>
-                  <h3>{brokerName}</h3>
-                  <p>{brokerPhone}</p>
-                </div>
-              </div>
-
-              <a
-                className="btnPrimary"
-                target="_blank"
-                rel="noopener noreferrer"
-                href={`https://wa.me/55${brokerPhone.replace(/\D/g, "")}?text=Olá, tenho interesse no imóvel: ${encodeURIComponent(property.title)}`}
-              >
-                Falar no WhatsApp
-              </a>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <section className="section gallerySectionCompact">
+      <section className="propertyMainPremium">
         <div className="container">
-          {gallery.length > 0 && (
-            <div className="detailGalleryBlock">
-              <div className="detailGalleryHead">
-                <div>
-                  <span className="eyebrow">Galeria do imóvel</span>
-                  <h3>Visualize as fotos com mais conforto</h3>
-                </div>
-                <p>Clique em qualquer imagem para ampliar, navegar pelas setas e visualizar as miniaturas.</p>
-              </div>
-              <ImageLightbox images={gallery} />
+          <div className="propertySummaryCard">
+            <div>
+              <span className="eyebrow">Imóvel selecionado</span>
+              <h2>{property.price}</h2>
+              <p>{property.status || "Disponível"} • {property.category}</p>
             </div>
-          )}
-        </div>
-      </section>
 
-      <section className="section">
-        <div className="container detailBodyGrid">
-          <div className="detailContentStack">
-            <ExpandableInfo title="Descrição do imóvel" defaultOpen>
-              <p>{property.description || "Descrição em breve."}</p>
-            </ExpandableInfo>
-
-            <ExpandableInfo title="Características principais">
-              <p>
-                Imóvel localizado em {property.neighborhood || "São Roque"}, com foco em conforto,
-                localização e segurança.
-              </p>
-            </ExpandableInfo>
-
-            {floorPlans.length > 0 && (
-              <div className="floorPlanBlockRefined">
-                <h3>Plantas do imóvel</h3>
-                <p className="sectionText">Clique para ampliar as plantas disponíveis.</p>
-                <ImageLightbox images={floorPlans} classNamePrefix="floor" />
-              </div>
-            )}
-          </div>
-
-          <aside className="detailFactsPanel">
-            <h3>Informações rápidas</h3>
-            <div className="metricGrid detailFactsGrid">
+            <div className="propertyMetricBar">
               {property.area && <div><strong>{property.area}</strong><span>Área</span></div>}
-              {!!property.bedrooms && property.bedrooms > 0 && <div><strong>{property.bedrooms}</strong><span>Quartos</span></div>}
+              {!!property.bedrooms && property.bedrooms > 0 && <div><strong>{property.bedrooms}</strong><span>Dormitórios</span></div>}
+              {!!property.suites && property.suites > 0 && <div><strong>{property.suites}</strong><span>Suítes</span></div>}
               {!!property.bathrooms && property.bathrooms > 0 && <div><strong>{property.bathrooms}</strong><span>Banheiros</span></div>}
               {!!property.parking && property.parking > 0 && <div><strong>{property.parking}</strong><span>Vagas</span></div>}
             </div>
-          </aside>
+          </div>
+
+          <div className="propertyContentPremium">
+            <div className="propertyLeftColumn">
+              {gallery.length > 0 && (
+                <section className="propertyGalleryPremium">
+                  <div className="premiumSectionHead">
+                    <div>
+                      <span className="eyebrow">Galeria</span>
+                      <h3>Fotos do imóvel</h3>
+                    </div>
+                    <p>Clique na foto principal para abrir em tela cheia, navegar, compartilhar e ampliar.</p>
+                  </div>
+
+                  <ImageLightbox images={gallery} />
+                </section>
+              )}
+
+              <section className="propertyInfoPremium">
+                <ExpandableInfo title="Descrição do imóvel" defaultOpen>
+                  <p>{property.description || "Descrição em breve."}</p>
+                </ExpandableInfo>
+
+                <ExpandableInfo title="Características principais">
+                  <p>
+                    Imóvel localizado em {property.neighborhood || property.city}, com foco em conforto,
+                    localização e segurança.
+                  </p>
+                </ExpandableInfo>
+
+                {floorPlans.length > 0 && (
+                  <div className="floorPlanBlockRefined">
+                    <div className="premiumSectionHead">
+                      <div>
+                        <span className="eyebrow">Plantas</span>
+                        <h3>Plantas do imóvel</h3>
+                      </div>
+                    </div>
+                    <ImageLightbox images={floorPlans} classNamePrefix="floor" />
+                  </div>
+                )}
+              </section>
+            </div>
+
+            <aside className="propertyBrokerSticky">
+              <div className="brokerCardPremium">
+                <span className="eyebrow">Atendimento</span>
+                <h3>Corretor responsável</h3>
+
+                <div className="brokerTop">
+                  <div className="brokerPhoto" style={{ backgroundImage: `url(${brokerPhoto})` }} />
+                  <div>
+                    <strong>{brokerName}</strong>
+                    <p>{brokerPhone}</p>
+                  </div>
+                </div>
+
+                <a
+                  className="btnPrimary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={`https://wa.me/55${brokerPhone.replace(/\D/g, "")}?text=Olá, tenho interesse no imóvel: ${encodeURIComponent(property.title)}`}
+                >
+                  Falar no WhatsApp
+                </a>
+
+                <a
+                  className="btnLight"
+                  href={`mailto:alexandrowitch.imobiliaria@gmail.com?subject=${encodeURIComponent("Interesse no imóvel " + property.title)}&body=${encodeURIComponent("Olá! Tenho interesse neste imóvel e gostaria de receber mais informações.")}`}
+                >
+                  Enviar e-mail
+                </a>
+
+                <div className="brokerMiniInfo">
+                  <span>Código</span>
+                  <strong>#{String(property.id).slice(0, 8)}</strong>
+                </div>
+              </div>
+            </aside>
+          </div>
         </div>
       </section>
 
