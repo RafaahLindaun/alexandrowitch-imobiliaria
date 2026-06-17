@@ -3901,3 +3901,546 @@ html, body {
     font-size: 27px;
   }
 }
+
+/* V15 - painel do corretor preguiçoso + site vivo */
+
+/* Base viva */
+:root {
+  --mouse-x: 50vw;
+  --mouse-y: 50vh;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body::selection {
+  background: rgba(201,168,106,.32);
+}
+
+.cursorGlow {
+  position: fixed;
+  left: var(--mouse-x);
+  top: var(--mouse-y);
+  width: 360px;
+  height: 360px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(circle, rgba(201,168,106,.12), transparent 62%);
+  mix-blend-mode: multiply;
+  opacity: .85;
+}
+
+a, button, .propertyCard, .adminPropertyCard, .homeActionCard, .refinedQuickCard, .galleryItem {
+  position: relative;
+  overflow: hidden;
+}
+
+.clickRipple {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  left: 0;
+  top: 0;
+  border-radius: 999px;
+  pointer-events: none;
+  background: rgba(201,168,106,.36);
+  transform: translate(-50%, -50%) scale(1);
+  animation: clickRipple .62s ease-out forwards;
+  z-index: 15;
+}
+
+@keyframes clickRipple {
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(32);
+  }
+}
+
+.motionReady {
+  opacity: .01;
+  transform: translateY(22px);
+  transition: opacity .72s ease, transform .72s ease;
+}
+
+.motionReady.inView {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btnPrimary,
+.btnDark,
+.btnLight,
+.btnSecondary,
+.navCta,
+.searchButton,
+.homeActionCard,
+.refinedQuickCard,
+.propertyCard,
+.adminPropertyCard,
+.contactCard,
+.serviceCard {
+  transition:
+    transform .22s ease,
+    box-shadow .22s ease,
+    border-color .22s ease,
+    background .22s ease,
+    filter .22s ease;
+}
+
+.btnPrimary:hover,
+.btnDark:hover,
+.btnLight:hover,
+.btnSecondary:hover,
+.navCta:hover,
+.searchButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 38px rgba(13,27,62,.16);
+}
+
+.btnPrimary:active,
+.btnDark:active,
+.btnLight:active,
+.btnSecondary:active,
+.navCta:active,
+.searchButton:active {
+  transform: translateY(-1px) scale(.98);
+}
+
+.propertyCard:hover,
+.homeActionCard:hover,
+.refinedQuickCard:hover,
+.serviceCard:hover,
+.contactCard:hover {
+  transform: translateY(-8px);
+}
+
+.propertyCarousel img,
+.aboutImage,
+.hero,
+.propertyHeroPremium,
+.galleryItem {
+  will-change: transform;
+}
+
+.galleryItem:hover {
+  transform: scale(1.012);
+  filter: saturate(1.05) contrast(1.04);
+}
+
+.navLinks a:hover,
+.navDropButton:hover {
+  color: var(--dourado);
+}
+
+/* Admin novo */
+.adminHeroRefined {
+  background:
+    radial-gradient(circle at 85% 30%, rgba(201,168,106,.22), transparent 34%),
+    linear-gradient(135deg, #071128, #0d1b3e 68%, #1c3770);
+}
+
+.adminHeroRefined h1 {
+  max-width: 900px;
+}
+
+.adminHeroActions {
+  margin-top: 26px;
+}
+
+.adminManagerSection {
+  padding-top: 54px;
+}
+
+.adminWorkspace {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.adminSearchPanel {
+  position: sticky;
+  top: 105px;
+  display: grid;
+  gap: 18px;
+}
+
+.adminSearchCard {
+  background: #fff;
+  border: 1px solid rgba(201,168,106,.34);
+  box-shadow: 0 22px 55px rgba(13,27,62,.09);
+  padding: 24px;
+  border-radius: 26px;
+}
+
+.adminSearchCard h3 {
+  margin: 6px 0 8px;
+  font-family: Georgia, serif;
+  color: var(--azul);
+  font-size: 34px;
+  font-weight: 400;
+}
+
+.adminSearchCard p {
+  color: #5d6472;
+  line-height: 1.55;
+  margin: 0 0 18px;
+}
+
+.adminSearchField {
+  display: grid;
+  gap: 7px;
+  margin-bottom: 14px;
+}
+
+.adminSearchField span {
+  color: var(--dourado);
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.adminSearchField input,
+.adminSearchField select {
+  min-height: 48px;
+  border: 1px solid #e8ddca;
+  background: #fbfaf7;
+  border-radius: 16px;
+  padding: 0 14px;
+  color: var(--azul);
+  outline: none;
+}
+
+.adminSearchField input:focus,
+.adminSearchField select:focus {
+  border-color: var(--dourado);
+  box-shadow: 0 0 0 4px rgba(201,168,106,.16);
+}
+
+.adminFullButton {
+  width: 100%;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.adminMiniStats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.adminMiniStats div {
+  background: var(--azul);
+  color: white;
+  padding: 18px;
+  border-radius: 20px;
+  box-shadow: 0 16px 36px rgba(13,27,62,.12);
+}
+
+.adminMiniStats strong {
+  display: block;
+  color: var(--dourado);
+  font-family: Georgia, serif;
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.adminMiniStats span {
+  display: block;
+  margin-top: 4px;
+  color: rgba(255,255,255,.72);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.adminResultsPanel {
+  min-width: 0;
+}
+
+.adminResultsTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: end;
+  margin-bottom: 22px;
+}
+
+.adminResultsTop h2 {
+  margin: 5px 0 0;
+  font-family: Georgia, serif;
+  color: var(--azul);
+  font-size: clamp(34px, 4vw, 58px);
+  font-weight: 400;
+}
+
+.adminPropertyGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.adminPropertyCard {
+  background: #fff;
+  border: 1px solid rgba(201,168,106,.3);
+  box-shadow: 0 18px 45px rgba(13,27,62,.08);
+  border-radius: 28px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  min-height: 230px;
+}
+
+.adminPropertyCard:hover {
+  box-shadow: 0 28px 65px rgba(13,27,62,.14);
+  border-color: rgba(201,168,106,.62);
+}
+
+.adminPropertyCard.isSold {
+  opacity: .86;
+}
+
+.adminPropertyImage {
+  position: relative;
+  min-height: 230px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.adminPropertyImage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7,17,40,.18), rgba(7,17,40,.72));
+}
+
+.adminPropertyImage .statusBadge,
+.adminCodeBadge {
+  position: absolute;
+  z-index: 2;
+  left: 14px;
+}
+
+.adminPropertyImage .statusBadge {
+  top: 14px;
+}
+
+.adminCodeBadge {
+  bottom: 14px;
+  color: white;
+  background: rgba(7,17,40,.72);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 999px;
+  padding: 9px 11px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  backdrop-filter: blur(8px);
+}
+
+.adminPropertyInfo {
+  padding: 22px;
+  display: grid;
+  align-content: space-between;
+  gap: 14px;
+}
+
+.adminPropertyInfo h3 {
+  margin: 0;
+  color: var(--azul);
+  font-family: Georgia, serif;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.adminPropertyInfo p {
+  margin: 0;
+  color: #5d6472;
+  line-height: 1.55;
+}
+
+.adminCardMetrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.adminCardMetrics span {
+  background: #f2ebde;
+  color: var(--azul);
+  border-radius: 999px;
+  padding: 8px 10px;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.adminPropertyActions {
+  display: grid;
+  grid-template-columns: .7fr .9fr 1.2fr;
+  gap: 9px;
+}
+
+.adminPropertyActions .btnDark,
+.adminPropertyActions .btnPrimary,
+.btnSold,
+.btnUnsold {
+  min-height: 43px;
+  border-radius: 999px;
+  font-size: 11px;
+  padding: 0 12px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 0;
+  cursor: pointer;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.btnSold {
+  background: #1f7a43;
+  color: white;
+}
+
+.btnSold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(31,122,67,.22);
+}
+
+.btnUnsold {
+  background: #f2ebde;
+  color: var(--azul);
+  border: 1px solid rgba(201,168,106,.32);
+}
+
+.btnSold:disabled,
+.btnUnsold:disabled {
+  opacity: .55;
+  cursor: wait;
+}
+
+.adminEmptyState {
+  background: white;
+  border: 1px solid rgba(201,168,106,.28);
+  box-shadow: 0 18px 45px rgba(13,27,62,.08);
+  padding: 34px;
+  border-radius: 26px;
+}
+
+.adminEmptyState h3 {
+  margin: 0 0 8px;
+  font-family: Georgia, serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--azul);
+}
+
+.soldReturnedText {
+  display: inline-flex;
+  align-items: center;
+  color: #1f7a43;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+/* Apple-like subtle scroll/hover polish */
+.homeActionCard::after,
+.refinedQuickCard::after,
+.propertyCard::after,
+.adminPropertyCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(201,168,106,.12), transparent 30%);
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+
+.homeActionCard:hover::after,
+.refinedQuickCard:hover::after,
+.propertyCard:hover::after,
+.adminPropertyCard:hover::after {
+  opacity: 1;
+}
+
+@media(max-width: 1200px) {
+  .adminWorkspace {
+    grid-template-columns: 280px minmax(0, 1fr);
+  }
+
+  .adminPropertyGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media(max-width: 900px) {
+  .cursorGlow {
+    display: none;
+  }
+
+  .adminWorkspace {
+    grid-template-columns: 1fr;
+  }
+
+  .adminSearchPanel {
+    position: static;
+  }
+
+  .adminSearchCard {
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  .adminMiniStats {
+    grid-template-columns: repeat(4, minmax(120px, 1fr));
+    overflow-x: auto;
+    padding-bottom: 6px;
+  }
+
+  .adminResultsTop {
+    display: grid;
+    align-items: start;
+  }
+
+  .adminResultsTop .btnPrimary {
+    width: 100%;
+  }
+
+  .adminPropertyCard {
+    grid-template-columns: 1fr;
+  }
+
+  .adminPropertyImage {
+    min-height: 220px;
+  }
+
+  .adminPropertyActions {
+    grid-template-columns: 1fr;
+  }
+
+  .motionReady {
+    transform: translateY(12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursorGlow,
+  .clickRipple {
+    display: none !important;
+  }
+
+  .motionReady,
+  .motionReady.inView,
+  * {
+    transition-duration: .001ms !important;
+    animation-duration: .001ms !important;
+  }
+}

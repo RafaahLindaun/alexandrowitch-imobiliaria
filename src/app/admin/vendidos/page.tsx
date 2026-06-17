@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
 import { createClient } from "../../../lib/supabase/server";
+import AdminSoldReturnButton from "../../../components/AdminSoldReturnButton";
 
 export default async function SoldPage() {
   const supabase = await createClient();
@@ -42,7 +43,7 @@ export default async function SoldPage() {
                 <span className="statusBadge sold">{property.status}</span>
                 <h3>{property.title}</h3>
                 <p>{property.operation} • {property.price}</p>
-                <Link href={`/admin/editar/${property.id}`} className="btnPrimary">Editar</Link>
+                <div className="adminActions"><Link href={`/admin/editar/${property.id}`} className="btnPrimary">Editar</Link><AdminSoldReturnButton id={property.id} /></div>
               </div>
             ))}
           </div>

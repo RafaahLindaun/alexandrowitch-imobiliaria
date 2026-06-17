@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import AdminPropertyManager from "../../components/AdminPropertyManager";
 import { createClient } from "../../lib/supabase/server";
 
 export default async function AdminPage() {
@@ -17,24 +18,21 @@ export default async function AdminPage() {
     .select("*")
     .order("created_at", { ascending: false });
 
-  const total = properties?.length || 0;
-  const sold = properties?.filter((item) => item.status === "Vendido" || item.status === "Alugado").length || 0;
-  const available = total - sold;
-  const featured = properties?.filter((item) => item.featured).length || 0;
-
   return (
-    <main className="page">
+    <main className="page adminDashboardPage">
       <Navbar />
 
-      <section className="pageTop adminPageTop">
+      <section className="pageTop adminPageTop adminHeroRefined">
         <div className="container">
           <span className="adminPill">Você está logado como corretor</span>
           <h1>Painel do Corretor</h1>
-          <p>Cadastre, edite, marque vendidos e acompanhe leads.</p>
-          <br />
-          <div className="adminActions">
+          <p>
+            Pesquise por código, palavra-chave, bairro ou preço. Edite imóveis e marque como vendido em poucos cliques.
+          </p>
+
+          <div className="adminActions adminHeroActions">
             <Link href="/" className="btnLight">Ver site</Link>
-            <Link href="/imoveis" className="btnLight">Ver imóveis e editar</Link>
+            <Link href="/imoveis" className="btnLight">Ver imóveis no site</Link>
             <Link href="/admin/novo" className="btnPrimary">Novo imóvel</Link>
             <Link href="/admin/vendidos" className="btnSecondary">Vendidos</Link>
             <a href="/admin/logout" className="btnSecondary">Sair</a>
@@ -42,38 +40,9 @@ export default async function AdminPage() {
         </div>
       </section>
 
-      <section className="section">
-        <div className="container grid4">
-          <div className="adminCard"><h3>{total}</h3><p>Total de imóveis</p></div>
-          <div className="adminCard"><h3>{available}</h3><p>Disponíveis</p></div>
-          <div className="adminCard"><h3>{sold}</h3><p>Vendidos/Alugados</p></div>
-          <div className="adminCard"><h3>{featured}</h3><p>Em destaque</p></div>
-        </div>
-      </section>
-
-      <section className="section sectionLight">
+      <section className="section sectionLight adminManagerSection">
         <div className="container">
-          <div className="sectionHeader">
-            <h2 className="sectionTitle">Imóveis cadastrados</h2>
-          </div>
-
-          {!properties?.length && <p className="sectionText">Nenhum imóvel cadastrado ainda.</p>}
-
-          <div className="grid3">
-            {(properties || []).map((property) => (
-              <div className="adminCard" key={property.id}>
-                <span className={`statusBadge ${property.status === "Vendido" || property.status === "Alugado" ? "sold" : ""}`}>
-                  {property.status || "Disponível"}
-                </span>
-                <h3>{property.title}</h3>
-                <p>{property.operation} • {property.price}<br />{property.city} - {property.neighborhood || "Sem bairro"}</p>
-                <div className="adminActions">
-                  <Link href={`/imoveis/${property.slug}`} className="btnDark">Ver</Link>
-                  <Link href={`/admin/editar/${property.id}`} className="btnPrimary">Editar</Link>
-                </div>
-              </div>
-            ))}
-          </div>
+          <AdminPropertyManager initialProperties={(properties || []) as any} />
         </div>
       </section>
 
