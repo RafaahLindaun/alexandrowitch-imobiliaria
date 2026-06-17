@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 
 export default function ImageLightbox({
   images,
@@ -11,7 +12,13 @@ export default function ImageLightbox({
 }) {
   const safeImages = useMemo(() => images.filter(Boolean), [images]);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [mounted, setMounted] = useState(false);
   const [zoomed, setZoomed] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const selected = selectedIndex === null ? null : safeImages[selectedIndex];
 
   function openAt(index: number) {
@@ -58,12 +65,12 @@ export default function ImageLightbox({
       await navigator.clipboard.writeText(window.location.href);
       alert("Link copiado.");
     } catch {
-      // ignora
+      // sem ação
     }
   }
 
   async function fullscreen() {
-    const element = document.querySelector(".srGalleryOverlay") as HTMLElement | null;
+    const element = document.querySelector(".axGalleryOverlay") as HTMLElement | null;
     if (!element) return;
 
     if (!document.fullscreenElement) {
@@ -76,11 +83,17 @@ export default function ImageLightbox({
   useEffect(() => {
     if (selectedIndex === null) return;
 
-    const previousOverflow = document.documentElement.style.overflow;
-    const previousBodyOverflow = document.body.style.overflow;
+    const html = document.documentElement;
+    const body = document.body;
+    const previousHtmlOverflow = html.style.overflow;
+    const previousBodyOverflow = body.style.overflow;
+    const previousBodyPosition = body.style.position;
+    const previousBodyWidth = body.style.width;
 
-    document.documentElement.style.overflow = "hidden";
-    document.body.style.overflow = "hidden";
+    html.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+    body.style.position = "relative";
+    body.style.width = "100%";
 
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") close();
@@ -91,8 +104,10 @@ export default function ImageLightbox({
     window.addEventListener("keydown", onKeyDown);
 
     return () => {
-      document.documentElement.style.overflow = previousOverflow;
-      document.body.style.overflow = previousBodyOverflow;
+      html.style.overflow = previousHtmlOverflow;
+      body.style.overflow = previousBodyOverflow;
+      body.style.position = previousBodyPosition;
+      body.style.width = previousBodyWidth;
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [selectedIndex, safeImages.length]);
@@ -102,6 +117,74 @@ export default function ImageLightbox({
   const wrapperClass = classNamePrefix === "floor" ? "floorPlanGrid" : "gallery";
   const itemClass = classNamePrefix === "floor" ? "floorPlanItem" : "galleryItem";
   const previewImages = safeImages.slice(0, classNamePrefix === "floor" ? safeImages.length : 5);
+
+  const lightbox =
+    selected && selectedIndex !== null ? (
+      <div className="axGalleryOverlay" role="dialog" aria-modal="true">
+        <div className="axGalleryTopbar">
+          <button type="button" className="axGalleryClose" onClick={close} aria-label="Fechar">
+            ×
+          </button>
+
+          <div className="axGalleryTitle">
+            <span>Fotos do imóvel</span>
+            <strong>{selectedIndex + 1} / {safeImages.length}</strong>
+          </div>
+
+          <div className="axGalleryTools">
+            <button type="button" onClick={sharePage} aria-label="Compartilhar">
+              <svg viewBox="0 0 24 24"><path d="M18 16.1c-.8 0-1.5.3-2 .8L8.9 12.8c.1-.3.1-.5.1-.8s0-.5-.1-.8L16 7.1c.5.5 1.2.8 2 .8 1.7 0 3-1.3 3-3s-1.3-3-3-3-3 1.3-3 3c0 .3 0 .5.1.8L8 9.9c-.5-.5-1.2-.8-2-.8-1.7 0-3 1.3-3 3s1.3 3 3 3c.8 0 1.5-.3 2-.8l7.1 4.2c-.1.2-.1.5-.1.7 0 1.6 1.3 2.9 3 2.9s3-1.3 3-3-1.3-3-3-3Z" fill="currentColor"/></svg>
+              <span>Compartilhar</span>
+            </button>
+
+            <button type="button" onClick={fullscreen} aria-label="Tela cheia">
+              <svg viewBox="0 0 24 24"><path d="M5 5h6v2H7v4H5V5Zm12 2h-4V5h6v6h-2V7ZM7 13v4h4v2H5v-6h2Zm12 0v6h-6v-2h4v-4h2Z" fill="currentColor"/></svg>
+              <span>Tela cheia</span>
+            </button>
+          </div>
+        </div>
+
+        <div className="axGalleryStageWrap">
+          {safeImages.length > 1 && (
+            <button type="button" className="axGalleryArrow axGalleryPrev" onClick={previous} aria-label="Imagem anterior">
+              ‹
+            </button>
+          )}
+
+          <div className={`axGalleryStage ${zoomed ? "zoomed" : ""}`}>
+            <img
+              src={selected}
+              alt="Imagem ampliada do imóvel"
+              onClick={() => setZoomed((value) => !value)}
+              draggable={false}
+            />
+            <img className="axGalleryWatermark" src="/logo-alexandrowitch.png" alt="" />
+          </div>
+
+          {safeImages.length > 1 && (
+            <button type="button" className="axGalleryArrow axGalleryNext" onClick={next} aria-label="Próxima imagem">
+              ›
+            </button>
+          )}
+        </div>
+
+        {safeImages.length > 1 && (
+          <div className="axGalleryThumbs">
+            {safeImages.map((image, index) => (
+              <button
+                type="button"
+                key={`${image}-thumb-${index}`}
+                className={index === selectedIndex ? "activeThumb" : ""}
+                onClick={() => openAt(index)}
+                aria-label={`Abrir miniatura ${index + 1}`}
+              >
+                <img src={image} alt="" draggable={false} />
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    ) : null;
 
   return (
     <>
@@ -123,64 +206,7 @@ export default function ImageLightbox({
         ))}
       </div>
 
-      {selected && selectedIndex !== null && (
-        <div className="srGalleryOverlay" role="dialog" aria-modal="true">
-          <header className="srGalleryHeader">
-            <button type="button" className="srGalleryClose" onClick={close} aria-label="Fechar">
-              ×
-            </button>
-
-            <div className="srGalleryCounter">
-              <span>Fotos do imóvel</span>
-              <strong>{selectedIndex + 1} / {safeImages.length}</strong>
-            </div>
-
-            <div className="srGalleryTools">
-              <button type="button" onClick={sharePage} aria-label="Compartilhar">
-                <svg viewBox="0 0 24 24"><path d="M18 16.1c-.8 0-1.5.3-2 .8L8.9 12.8c.1-.3.1-.5.1-.8s0-.5-.1-.8L16 7.1c.5.5 1.2.8 2 .8 1.7 0 3-1.3 3-3s-1.3-3-3-3-3 1.3-3 3c0 .3 0 .5.1.8L8 9.9c-.5-.5-1.2-.8-2-.8-1.7 0-3 1.3-3 3s1.3 3 3 3c.8 0 1.5-.3 2-.8l7.1 4.2c-.1.2-.1.5-.1.7 0 1.6 1.3 2.9 3 2.9s3-1.3 3-3-1.3-3-3-3Z" fill="currentColor"/></svg>
-                <span>Compartilhar</span>
-              </button>
-              <button type="button" onClick={fullscreen} aria-label="Tela cheia">
-                <svg viewBox="0 0 24 24"><path d="M5 5h6v2H7v4H5V5Zm12 2h-4V5h6v6h-2V7ZM7 13v4h4v2H5v-6h2Zm12 0v6h-6v-2h4v-4h2Z" fill="currentColor"/></svg>
-                <span>Tela cheia</span>
-              </button>
-            </div>
-          </header>
-
-          <main className="srGalleryMain">
-            {safeImages.length > 1 && (
-              <button type="button" className="srGalleryArrow srPrev" onClick={previous} aria-label="Imagem anterior">
-                ‹
-              </button>
-            )}
-
-            <div className={`srGalleryImageStage ${zoomed ? "zoomed" : ""}`}>
-              <img src={selected} alt="Imagem ampliada do imóvel" onClick={() => setZoomed((value) => !value)} draggable={false} />
-              <img className="srGalleryWatermark" src="/logo-alexandrowitch.png" alt="" />
-            </div>
-
-            {safeImages.length > 1 && (
-              <button type="button" className="srGalleryArrow srNext" onClick={next} aria-label="Próxima imagem">
-                ›
-              </button>
-            )}
-          </main>
-
-          <footer className="srGalleryThumbs">
-            {safeImages.map((image, index) => (
-              <button
-                type="button"
-                key={`${image}-thumb-${index}`}
-                className={index === selectedIndex ? "activeThumb" : ""}
-                onClick={() => openAt(index)}
-                aria-label={`Abrir miniatura ${index + 1}`}
-              >
-                <img src={image} alt="" draggable={false} />
-              </button>
-            ))}
-          </footer>
-        </div>
-      )}
+      {mounted && lightbox ? createPortal(lightbox, document.body) : null}
     </>
   );
 }

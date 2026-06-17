@@ -3412,3 +3412,492 @@ html, body {
     bottom: 12px;
   }
 }
+
+/* V14 - galeria realmente fixa + atalhos refinados */
+
+/* Desativa visuais antigos que ainda poderiam disputar com o overlay novo */
+.premiumLightbox,
+.premiumLightboxSurface,
+.googleGalleryTopbar,
+.googleGalleryBody,
+.googleThumbStrip,
+.srGalleryOverlay {
+  display: none !important;
+}
+
+/* Preview da galeria na página */
+.gallery {
+  display: grid !important;
+  grid-template-columns: 1.38fr .82fr .82fr !important;
+  grid-template-rows: 240px 240px !important;
+  gap: 12px !important;
+  margin-top: 0 !important;
+}
+
+.galleryItem {
+  height: 100% !important;
+  min-height: 0 !important;
+  border-radius: 22px !important;
+  background-size: cover !important;
+  background-position: center !important;
+  position: relative !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  box-shadow: inset 0 -90px 90px rgba(7,17,40,.16);
+}
+
+.galleryItem:first-child {
+  grid-row: span 2 !important;
+  min-height: 0 !important;
+}
+
+.galleryMainLabel {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  background: rgba(7,17,40,.78);
+  color: white;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 999px;
+  padding: 11px 15px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+  z-index: 3;
+}
+
+.galleryMoreOverlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(7,17,40,.66);
+  color: white;
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  z-index: 4;
+}
+
+/* Overlay novo, único e por Portal */
+.axGalleryOverlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147483647 !important;
+  width: 100vw !important;
+  height: 100dvh !important;
+  max-width: none !important;
+  max-height: none !important;
+  transform: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #050914 !important;
+  color: #fff !important;
+  display: grid !important;
+  grid-template-rows: 72px minmax(0, 1fr) 108px !important;
+  overflow: hidden !important;
+  overscroll-behavior: contain !important;
+  touch-action: none !important;
+  box-sizing: border-box !important;
+}
+
+.axGalleryTopbar {
+  min-height: 0 !important;
+  height: 72px !important;
+  display: grid !important;
+  grid-template-columns: 54px 1fr auto !important;
+  align-items: center !important;
+  gap: 14px !important;
+  padding: 0 18px !important;
+  background: rgba(5,9,20,.98) !important;
+  border-bottom: 1px solid rgba(255,255,255,.08) !important;
+  box-sizing: border-box !important;
+}
+
+.axGalleryClose {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 999px !important;
+  border: 0 !important;
+  background: rgba(255,255,255,.1) !important;
+  color: #fff !important;
+  font-size: 34px !important;
+  line-height: 1 !important;
+  display: grid !important;
+  place-items: center !important;
+  cursor: pointer !important;
+}
+
+.axGalleryTitle span {
+  display: block !important;
+  color: rgba(255,255,255,.62) !important;
+  font-size: 12px !important;
+}
+
+.axGalleryTitle strong {
+  display: block !important;
+  color: white !important;
+  font-size: 15px !important;
+  margin-top: 3px !important;
+}
+
+.axGalleryTools {
+  display: flex !important;
+  gap: 10px !important;
+}
+
+.axGalleryTools button {
+  height: 42px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(255,255,255,.16) !important;
+  background: rgba(255,255,255,.08) !important;
+  color: #fff !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 0 14px !important;
+  cursor: pointer !important;
+  font-weight: 800 !important;
+}
+
+.axGalleryTools svg {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+.axGalleryStageWrap {
+  position: relative !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: grid !important;
+  place-items: center !important;
+  padding: 14px 78px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.axGalleryStage {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  display: grid !important;
+  place-items: center !important;
+  overflow: hidden !important;
+}
+
+.axGalleryStage > img:not(.axGalleryWatermark) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  user-select: none !important;
+  cursor: zoom-in !important;
+  transition: transform .22s ease !important;
+}
+
+.axGalleryStage.zoomed > img:not(.axGalleryWatermark) {
+  transform: scale(1.65) !important;
+  cursor: zoom-out !important;
+}
+
+.axGalleryWatermark {
+  position: absolute !important;
+  right: 22px !important;
+  bottom: 20px !important;
+  width: min(190px, 22vw) !important;
+  max-height: 90px !important;
+  object-fit: contain !important;
+  opacity: .22 !important;
+  pointer-events: none !important;
+  z-index: 2 !important;
+}
+
+.axGalleryArrow {
+  position: absolute !important;
+  z-index: 5 !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 54px !important;
+  height: 72px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(255,255,255,.16) !important;
+  background: rgba(255,255,255,.09) !important;
+  color: #fff !important;
+  font-size: 52px !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  display: grid !important;
+  place-items: center !important;
+}
+
+.axGalleryPrev {
+  left: 18px !important;
+}
+
+.axGalleryNext {
+  right: 18px !important;
+}
+
+.axGalleryThumbs {
+  min-height: 0 !important;
+  height: 108px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  overflow-x: auto !important;
+  padding: 12px 18px 18px !important;
+  background: rgba(5,9,20,.98) !important;
+  border-top: 1px solid rgba(255,255,255,.08) !important;
+  box-sizing: border-box !important;
+}
+
+.axGalleryThumbs button {
+  width: 112px !important;
+  min-width: 112px !important;
+  height: 72px !important;
+  border-radius: 12px !important;
+  border: 2px solid transparent !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  background: rgba(255,255,255,.08) !important;
+  opacity: .66 !important;
+  cursor: pointer !important;
+}
+
+.axGalleryThumbs button.activeThumb {
+  border-color: var(--dourado) !important;
+  opacity: 1 !important;
+}
+
+.axGalleryThumbs img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* Atalhos refinados */
+.refinedQuickBrowseSection {
+  background:
+    radial-gradient(circle at 12% 15%, rgba(201,168,106,.12), transparent 34%),
+    linear-gradient(180deg, #fff, #f8f5ef);
+}
+
+.refinedQuickHeader {
+  align-items: center;
+}
+
+.refinedQuickGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.refinedQuickCard {
+  position: relative;
+  overflow: hidden;
+  min-height: 310px;
+  padding: 28px;
+  border: 1px solid rgba(201,168,106,.32);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.86));
+  box-shadow: 0 22px 55px rgba(13,27,62,.08);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+
+.refinedQuickCard::before {
+  content: "";
+  position: absolute;
+  right: -46px;
+  top: -46px;
+  width: 130px;
+  height: 130px;
+  border-radius: 999px;
+  background: rgba(201,168,106,.12);
+}
+
+.refinedQuickCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 70px rgba(13,27,62,.14);
+  border-color: rgba(201,168,106,.68);
+}
+
+.quickEyebrow {
+  color: var(--dourado);
+  font-size: 11px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.refinedQuickCard h3 {
+  position: relative;
+  margin: 16px 0 10px;
+  color: var(--azul);
+  font-family: Georgia, serif;
+  font-size: 30px;
+  line-height: 1.05;
+  font-weight: 400;
+}
+
+.refinedQuickCard p {
+  position: relative;
+  color: #5d6472;
+  line-height: 1.65;
+  margin: 0 0 22px;
+}
+
+.quickChipList {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.quickChipList a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: #f2ebde;
+  color: var(--azul);
+  font-size: 13px;
+  font-weight: 800;
+  border: 1px solid rgba(201,168,106,.28);
+}
+
+.quickChipList a:hover {
+  background: var(--azul);
+  color: white;
+}
+
+@media(max-width: 1100px) {
+  .refinedQuickGrid {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    padding-bottom: 14px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .refinedQuickCard {
+    min-width: min(340px, 82vw);
+    scroll-snap-align: start;
+  }
+}
+
+@media(max-width: 900px) {
+  .gallery {
+    display: flex !important;
+    overflow-x: auto !important;
+    grid-template-columns: unset !important;
+    grid-template-rows: unset !important;
+    gap: 10px !important;
+    scroll-snap-type: x mandatory !important;
+    padding-bottom: 8px !important;
+  }
+
+  .galleryItem,
+  .galleryItem:first-child {
+    min-width: 86vw !important;
+    height: 245px !important;
+    scroll-snap-align: start !important;
+  }
+
+  .axGalleryOverlay {
+    grid-template-rows: 62px minmax(0, 1fr) 82px !important;
+  }
+
+  .axGalleryTopbar {
+    height: 62px !important;
+    grid-template-columns: 44px 1fr auto !important;
+    padding: 0 10px !important;
+    gap: 8px !important;
+  }
+
+  .axGalleryClose {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .axGalleryTitle span {
+    font-size: 11px !important;
+  }
+
+  .axGalleryTitle strong {
+    font-size: 13px !important;
+  }
+
+  .axGalleryTools button {
+    width: 40px !important;
+    padding: 0 !important;
+    justify-content: center !important;
+  }
+
+  .axGalleryTools button span {
+    display: none !important;
+  }
+
+  .axGalleryStageWrap {
+    padding: 8px 10px !important;
+  }
+
+  .axGalleryStage > img:not(.axGalleryWatermark) {
+    cursor: default !important;
+  }
+
+  .axGalleryStage.zoomed > img:not(.axGalleryWatermark) {
+    transform: none !important;
+  }
+
+  .axGalleryArrow {
+    width: 40px !important;
+    height: 54px !important;
+    font-size: 38px !important;
+    background: rgba(0,0,0,.36) !important;
+  }
+
+  .axGalleryPrev {
+    left: 8px !important;
+  }
+
+  .axGalleryNext {
+    right: 8px !important;
+  }
+
+  .axGalleryThumbs {
+    height: 82px !important;
+    padding: 8px 10px 12px !important;
+  }
+
+  .axGalleryThumbs button {
+    width: 68px !important;
+    min-width: 68px !important;
+    height: 50px !important;
+  }
+
+  .axGalleryWatermark {
+    width: min(140px, 38vw) !important;
+    right: 12px !important;
+    bottom: 12px !important;
+  }
+
+  .refinedQuickCard {
+    padding: 22px;
+    min-height: 285px;
+  }
+
+  .refinedQuickCard h3 {
+    font-size: 27px;
+  }
+}
