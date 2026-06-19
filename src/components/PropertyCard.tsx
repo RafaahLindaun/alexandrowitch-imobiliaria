@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { createClient } from "../lib/supabase/client";
 import { getPropertyCode } from "../lib/propertyCode";
 import { Property } from "../types/property";
@@ -15,7 +14,6 @@ export default function PropertyCard({
   property: Property;
   images?: string[];
 }) {
-  const router = useRouter();
   const [isAdmin, setIsAdmin] = useState(false);
   const [shared, setShared] = useState(false);
 
@@ -32,7 +30,7 @@ export default function PropertyCard({
   const href = `/imoveis/${property.slug}`;
 
   function openProperty() {
-    router.push(href);
+    window.open(href, "_blank", "noopener,noreferrer");
   }
 
   async function shareProperty(event: React.MouseEvent<HTMLButtonElement>) {
@@ -60,7 +58,7 @@ export default function PropertyCard({
       setShared(true);
       window.setTimeout(() => setShared(false), 1600);
     } catch {
-      window.open(url, "_blank");
+      window.open(url, "_blank", "noopener,noreferrer");
     }
   }
 
@@ -139,7 +137,7 @@ export default function PropertyCard({
         </div>
 
         <div className="cardActions" onClick={stop}>
-          <Link href={href} className="btnDark">
+          <Link href={href} className="btnDark" target="_blank" rel="noopener noreferrer">
             Ver imóvel
           </Link>
 

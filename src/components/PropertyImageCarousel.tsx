@@ -108,8 +108,6 @@ export default function PropertyImageCarousel({
               />
             ))}
           </div>
-
-          <div className="swipeHint">Arraste</div>
         </>
       )}
 
