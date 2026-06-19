@@ -6,10 +6,18 @@ import GlobalInteractions from "../components/GlobalInteractions";
 export const metadata = {
   title: "Alexandrowitch Imobiliária e Administradora",
   description: "Imóveis em São Paulo, São Roque e regiões.",
+  manifest: "/site.webmanifest",
+  themeColor: "#0D1B3E",
   icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
-    apple: "/favicon.png",
+    icon: [
+      { url: "/favicon.png", type: "image/png" },
+      { url: "/icon.png", type: "image/png" }
+    ],
+    shortcut: "/shortcut-icon.png",
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      { url: "/favicon.png", sizes: "512x512", type: "image/png" }
+    ],
   },
 };
 export const viewport = {
@@ -17,6 +25,8 @@ export const viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
+  viewportFit: "cover",
+  themeColor: "#0D1B3E",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -73,6 +73,12 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
         code={code}
       />
 
+      <div className="mobilePropertyBadgesBelow">
+        <span>{property.operation}</span>
+        <span>Cód. {code}</span>
+        <span>{property.status || "Disponível"}</span>
+      </div>
+
       <section className="propertyMainPremium">
         <div className="container">
           <div className="propertySummaryCard srSummaryCard">

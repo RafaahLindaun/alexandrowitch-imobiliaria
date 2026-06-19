@@ -14,19 +14,26 @@ export default function ImageLightbox({
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [mounted, setMounted] = useState(false);
   const [zoomed, setZoomed] = useState(false);
+  const [zoomOrigin, setZoomOrigin] = useState("50% 50%");
+  const [desktopPointer, setDesktopPointer] = useState(false);
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+    setDesktopPointer(window.matchMedia("(pointer: fine)").matches);
+  }, []);
 
   const selected = selectedIndex === null ? null : safeImages[selectedIndex];
 
   function openAt(index: number) {
     setSelectedIndex(index);
     setZoomed(false);
+    setZoomOrigin("50% 50%");
   }
 
   function close() {
     setSelectedIndex(null);
     setZoomed(false);
+    setZoomOrigin("50% 50%");
   }
 
   function previous() {
@@ -35,6 +42,7 @@ export default function ImageLightbox({
       return value === 0 ? safeImages.length - 1 : value - 1;
     });
     setZoomed(false);
+    setZoomOrigin("50% 50%");
   }
 
   function next() {
@@ -43,6 +51,21 @@ export default function ImageLightbox({
       return value === safeImages.length - 1 ? 0 : value + 1;
     });
     setZoomed(false);
+    setZoomOrigin("50% 50%");
+  }
+
+  function handleMouseMove(event: React.MouseEvent<HTMLImageElement>) {
+    if (!desktopPointer || !zoomed) return;
+
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+    setZoomOrigin(`${x}% ${y}%`);
+  }
+
+  function handleImageClick() {
+    if (!desktopPointer) return;
+    setZoomed((value) => !value);
   }
 
   async function sharePage() {
@@ -122,7 +145,7 @@ export default function ImageLightbox({
 
   const lightbox =
     selected && selectedIndex !== null ? (
-      <div className="axGalleryOverlay" role="dialog" aria-modal="true">
+      <div className={`axGalleryOverlay ${desktopPointer ? "hasDesktopZoom" : ""}`} role="dialog" aria-modal="true">
         <header className="axGalleryTopbar">
           <button type="button" className="axGalleryClose" onClick={close} aria-label="Fechar">
             ×
@@ -156,10 +179,14 @@ export default function ImageLightbox({
           )}
 
           <div className={`axGalleryStage ${zoomed ? "zoomed" : ""}`}>
+            {desktopPointer && <div className="desktopZoomHint">{zoomed ? "Mover mouse para explorar" : "Clique para usar a lupa"}</div>}
+
             <img
               src={selected}
               alt="Imagem ampliada do imóvel"
-              onClick={() => setZoomed((value) => !value)}
+              onClick={handleImageClick}
+              onMouseMove={handleMouseMove}
+              style={{ transformOrigin: zoomOrigin }}
               draggable={false}
             />
             <img className="axGalleryWatermark" src="/logo-alexandrowitch.png" alt="" />
