@@ -15,9 +15,7 @@ export default function ImageLightbox({
   const [mounted, setMounted] = useState(false);
   const [zoomed, setZoomed] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => setMounted(true), []);
 
   const selected = selectedIndex === null ? null : safeImages[selectedIndex];
 
@@ -65,7 +63,7 @@ export default function ImageLightbox({
       await navigator.clipboard.writeText(window.location.href);
       alert("Link copiado.");
     } catch {
-      // sem ação
+      window.open(window.location.href, "_blank");
     }
   }
 
@@ -85,15 +83,18 @@ export default function ImageLightbox({
 
     const html = document.documentElement;
     const body = document.body;
+
     const previousHtmlOverflow = html.style.overflow;
     const previousBodyOverflow = body.style.overflow;
     const previousBodyPosition = body.style.position;
     const previousBodyWidth = body.style.width;
+    const previousTouchAction = body.style.touchAction;
 
     html.style.overflow = "hidden";
     body.style.overflow = "hidden";
     body.style.position = "relative";
     body.style.width = "100%";
+    body.style.touchAction = "none";
 
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") close();
@@ -108,6 +109,7 @@ export default function ImageLightbox({
       body.style.overflow = previousBodyOverflow;
       body.style.position = previousBodyPosition;
       body.style.width = previousBodyWidth;
+      body.style.touchAction = previousTouchAction;
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [selectedIndex, safeImages.length]);
@@ -121,7 +123,7 @@ export default function ImageLightbox({
   const lightbox =
     selected && selectedIndex !== null ? (
       <div className="axGalleryOverlay" role="dialog" aria-modal="true">
-        <div className="axGalleryTopbar">
+        <header className="axGalleryTopbar">
           <button type="button" className="axGalleryClose" onClick={close} aria-label="Fechar">
             ×
           </button>
@@ -133,18 +135,20 @@ export default function ImageLightbox({
 
           <div className="axGalleryTools">
             <button type="button" onClick={sharePage} aria-label="Compartilhar">
-              <svg viewBox="0 0 24 24"><path d="M18 16.1c-.8 0-1.5.3-2 .8L8.9 12.8c.1-.3.1-.5.1-.8s0-.5-.1-.8L16 7.1c.5.5 1.2.8 2 .8 1.7 0 3-1.3 3-3s-1.3-3-3-3-3 1.3-3 3c0 .3 0 .5.1.8L8 9.9c-.5-.5-1.2-.8-2-.8-1.7 0-3 1.3-3 3s1.3 3 3 3c.8 0 1.5-.3 2-.8l7.1 4.2c-.1.2-.1.5-.1.7 0 1.6 1.3 2.9 3 2.9s3-1.3 3-3-1.3-3-3-3Z" fill="currentColor"/></svg>
-              <span>Compartilhar</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18 16.1c-.8 0-1.5.3-2 .8L8.9 12.8c.1-.3.1-.5.1-.8s0-.5-.1-.8L16 7.1c.5.5 1.2.8 2 .8 1.7 0 3-1.3 3-3s-1.3-3-3-3-3 1.3-3 3c0 .3 0 .5.1.8L8 9.9c-.5-.5-1.2-.8-2-.8-1.7 0-3 1.3-3 3s1.3 3 3 3c.8 0 1.5-.3 2-.8l7.1 4.2c-.1.2-.1.5-.1.7 0 1.6 1.3 2.9 3 2.9s3-1.3 3-3-1.3-3-3-3Z" fill="currentColor" />
+              </svg>
             </button>
 
             <button type="button" onClick={fullscreen} aria-label="Tela cheia">
-              <svg viewBox="0 0 24 24"><path d="M5 5h6v2H7v4H5V5Zm12 2h-4V5h6v6h-2V7ZM7 13v4h4v2H5v-6h2Zm12 0v6h-6v-2h4v-4h2Z" fill="currentColor"/></svg>
-              <span>Tela cheia</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 5h6v2H7v4H5V5Zm12 2h-4V5h6v6h-2V7ZM7 13v4h4v2H5v-6h2Zm12 0v6h-6v-2h4v-4h2Z" fill="currentColor" />
+              </svg>
             </button>
           </div>
-        </div>
+        </header>
 
-        <div className="axGalleryStageWrap">
+        <main className="axGalleryStageWrap">
           {safeImages.length > 1 && (
             <button type="button" className="axGalleryArrow axGalleryPrev" onClick={previous} aria-label="Imagem anterior">
               ‹
@@ -166,10 +170,10 @@ export default function ImageLightbox({
               ›
             </button>
           )}
-        </div>
+        </main>
 
         {safeImages.length > 1 && (
-          <div className="axGalleryThumbs">
+          <footer className="axGalleryThumbs">
             {safeImages.map((image, index) => (
               <button
                 type="button"
@@ -181,7 +185,7 @@ export default function ImageLightbox({
                 <img src={image} alt="" draggable={false} />
               </button>
             ))}
-          </div>
+          </footer>
         )}
       </div>
     ) : null;
