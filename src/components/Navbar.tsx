@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { createClient } from "../lib/supabase/client";
 import MobileNavbar from "./MobileNavbar";
+import { CRECI_TEXT } from "../constants/contact";
 
 export default function Navbar() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -23,6 +24,7 @@ export default function Navbar() {
         <div className="brandTextWrap">
           <div className="brandName">Alexandrowitch</div>
           <div className="brandSub">{isAdmin ? "Painel do Corretor" : "Imobiliária e Administradora"}</div>
+          <div className="brandCreci">{CRECI_TEXT}</div>
         </div>
       </Link>
 

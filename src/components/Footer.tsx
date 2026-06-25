@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CONTACT_EMAIL, FACEBOOK_URL, INSTAGRAM_URL, MAIN_WHATSAPP, MARIA_WHATSAPP } from "../constants/contact";
+import { CONTACT_EMAIL, MARIA_EMAIL, FACEBOOK_URL, INSTAGRAM_URL, MAIN_WHATSAPP, MARIA_WHATSAPP, CRECI_TEXT } from "../constants/contact";
 
 function SocialIcon({ type }: { type: "instagram" | "facebook" }) {
   if (type === "instagram") {
@@ -28,6 +28,7 @@ export default function Footer() {
             <div>
               <div className="brandName">Alexandrowitch</div>
               <div className="brandSub">Imobiliária e Administradora</div>
+              <div className="footerCreci">{CRECI_TEXT}</div>
             </div>
           </div>
 
@@ -76,16 +77,18 @@ export default function Footer() {
         <div>
           <h4>Fale conosco</h4>
           <p>São Roque - SP</p>
-          <p>M Alexandrowitch<br />(11) 99614-5011</p>
+          <p className="footerCreci">{CRECI_TEXT}</p>
+          <p>M. Alexandrowitch<br />(11) 99614-5011</p>
           <p>Corretor Alexandrowitch<br />(11) 97400-5163</p>
           <p>{CONTACT_EMAIL}</p>
-          <a href={`https://wa.me/${MARIA_WHATSAPP}`} target="_blank">WhatsApp M Alexandrowitch</a>
+          <p>{MARIA_EMAIL}</p>
+          <a href={`https://wa.me/${MARIA_WHATSAPP}`} target="_blank">WhatsApp M. Alexandrowitch</a>
           <a href={`https://wa.me/${MAIN_WHATSAPP}`} target="_blank">WhatsApp Corretor</a>
         </div>
       </div>
 
       <div className="footerBottom">
-        © 2026 Alexandrowitch Imobiliária e Administradora. Todos os direitos reservados.
+        © 2026 Alexandrowitch Imobiliária e Administradora. Todos os direitos reservados. {CRECI_TEXT}.
       </div>
     </footer>
   );

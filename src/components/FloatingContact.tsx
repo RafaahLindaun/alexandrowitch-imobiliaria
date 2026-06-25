@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { EMAIL_LINK, MAIN_WHATSAPP, MARIA_WHATSAPP, whatsappLink } from "../constants/contact";
+import { EMAIL_LINK, MAIN_WHATSAPP, MARIA_WHATSAPP, MARIA_EMAIL, whatsappLink } from "../constants/contact";
 
 function WhatsAppIcon() {
   return (
@@ -21,9 +21,9 @@ export default function FloatingContact() {
           <div className="floatPanelGlow" />
           <div className="floatPanelHeader"><span className="floatHeaderIcon"><WhatsAppIcon /></span><div><h3>Fale conosco</h3><p>Escolha a melhor forma de contato</p></div></div>
           <div className="floatActions premiumFloatActions">
-            <a className="floatContactOption primaryOption" href={whatsappLink(MARIA_WHATSAPP, "Olá, gostaria de falar com M Alexandrowitch sobre imóveis em São Paulo, São Roque e regiões.")} target="_blank" rel="noopener noreferrer"><span className="optionIcon"><WhatsAppIcon /></span><span><strong>M Alexandrowitch</strong><small>(11) 99614-5011</small></span></a>
+            <a className="floatContactOption primaryOption" href={whatsappLink(MARIA_WHATSAPP, "Olá, gostaria de falar com M. Alexandrowitch sobre imóveis em São Paulo, São Roque e regiões.")} target="_blank" rel="noopener noreferrer"><span className="optionIcon"><WhatsAppIcon /></span><span><strong>M. Alexandrowitch</strong><small>(11) 99614-5011</small></span></a>
             <a className="floatContactOption" href={whatsappLink(MAIN_WHATSAPP, "Olá, gostaria de falar com o Corretor Alexandrowitch sobre imóveis.")} target="_blank" rel="noopener noreferrer"><span className="optionIcon"><WhatsAppIcon /></span><span><strong>Corretor Alexandrowitch</strong><small>(11) 97400-5163</small></span></a>
-            <a className="floatContactOption emailOption" href={EMAIL_LINK}><span className="optionIcon emailIcon">@</span><span><strong>E-mail</strong><small>rascunho pronto</small></span></a>
+            <a className="floatContactOption emailOption" href={EMAIL_LINK}><span className="optionIcon emailIcon">@</span><span><strong>E-mail</strong><small>rascunho pronto</small><small>{MARIA_EMAIL}</small></span></a>
           </div>
         </div>
       )}
