@@ -26,10 +26,7 @@ function textIncludes(value: string | null | undefined, search: string) {
   return normalize(value).includes(normalize(search));
 }
 
-function buildPageHref(
-  params: Record<string, string | undefined>,
-  page: number
-) {
+function buildPageHref(params: Record<string, string | undefined>, page: number) {
   const search = new URLSearchParams();
 
   Object.entries(params).forEach(([key, value]) => {
@@ -37,9 +34,7 @@ function buildPageHref(
     search.set(key, value);
   });
 
-  if (page > 1) {
-    search.set("page", String(page));
-  }
+  if (page > 1) search.set("page", String(page));
 
   const query = search.toString();
   return `/imoveis${query ? `?${query}` : ""}`;
@@ -148,40 +143,42 @@ export default async function PropertiesPage({
   const lastShown = Math.min(start + perPage, properties.length);
 
   return (
-    <main className="page">
+    <main className="page airbnbListingsPage">
       <Navbar />
 
-      <section className="pageTop propertiesTop">
+      <section className="airbnbListingHero">
         <div className="container">
-          <h1>{params?.tipo ? params.tipo : "Imóveis"}</h1>
-          <p>
-            Confira oportunidades cadastradas pela Alexandrowitch Imobiliária e Administradora
-            em São Paulo, São Roque e regiões.
-          </p>
+          <div className="airbnbHeroText">
+            <span className="eyebrow">Alexandrowitch Imobiliária</span>
+            <h1>{params?.tipo ? params.tipo : "Imóveis disponíveis"}</h1>
+            <p>
+              Encontre imóveis em São Paulo, São Roque e regiões com busca rápida,
+              carrossel de fotos e anúncios abertos em nova aba.
+            </p>
+          </div>
 
-          <SearchPanel initial={params || {}} availableLocations={availableLocations} />
+          <div className="airbnbStickySearch">
+            <SearchPanel initial={params || {}} availableLocations={availableLocations} />
+          </div>
         </div>
       </section>
 
-      <section className="section sectionLight pageResultsSection">
+      <section className="airbnbResultsSection">
         <div className="container">
-          <div className="resultsHeader">
+          <div className="airbnbResultsHeader">
             <div>
-              <span className="eyebrow">Resultado da busca</span>
               <h2>
                 {properties.length} imóvel{properties.length === 1 ? "" : "is"} encontrado
                 {properties.length === 1 ? "" : "s"}
               </h2>
               {properties.length > 0 && (
-                <p className="resultsCounter">
-                  Mostrando {firstShown} a {lastShown} de {properties.length}
-                </p>
+                <p>Mostrando {firstShown} a {lastShown} de {properties.length}</p>
               )}
             </div>
 
             {hasFilter && (
-              <a className="btnLight" href="/imoveis">
-                Limpar pesquisa
+              <a className="airbnbClearFilters" href="/imoveis">
+                Limpar filtros
               </a>
             )}
           </div>
@@ -189,13 +186,13 @@ export default async function PropertiesPage({
           {error && <p className="sectionText">Erro ao carregar imóveis: {error.message}</p>}
 
           {!error && properties.length === 0 && (
-            <div className="emptyLuxury">
-              <h3>Nenhum imóvel encontrado com esses filtros.</h3>
+            <div className="emptyLuxury airbnbEmpty">
+              <h3>Nenhum imóvel encontrado.</h3>
               <p>Altere cidade, bairro, valor ou tipo de imóvel para ampliar a busca.</p>
             </div>
           )}
 
-          <div className="grid3 resultGrid mobileTwoByTenGrid">
+          <div className="airbnbListingGrid mobileTwoByTenGrid">
             {paginatedProperties.map((property) => (
               <PropertyCard
                 key={property.id}
@@ -206,7 +203,7 @@ export default async function PropertiesPage({
           </div>
 
           {totalPages > 1 && (
-            <nav className="propertiesPagination" aria-label="Paginação de imóveis">
+            <nav className="propertiesPagination airbnbPagination" aria-label="Paginação de imóveis">
               <a
                 className={currentPage <= 1 ? "disabledPage" : ""}
                 href={currentPage <= 1 ? "#" : buildPageHref(params || {}, currentPage - 1)}
