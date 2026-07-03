@@ -8741,284 +8741,79 @@ a.btnSecondary,
   }
 }
 
-/* V29 - Navbar premium refinada */
+/* V30 - Navbar: mantém o layout premium original e melhora SOMENTE o gradiente */
 .navbar {
-  padding: 10px 28px !important;
-  min-height: 88px !important;
   background:
-    linear-gradient(180deg, rgba(7,17,40,.94), rgba(10,24,57,.90)) !important;
-  backdrop-filter: blur(18px) saturate(1.1);
-  -webkit-backdrop-filter: blur(18px) saturate(1.1);
+    radial-gradient(circle at 8% -35%, rgba(255,255,255,.22), transparent 28%),
+    radial-gradient(circle at 84% -50%, rgba(201,168,106,.20), transparent 32%),
+    linear-gradient(180deg, rgba(7,17,40,.98) 0%, rgba(13,27,62,.92) 48%, rgba(13,27,62,.70) 100%) !important;
+  backdrop-filter: blur(18px) saturate(1.08);
+  -webkit-backdrop-filter: blur(18px) saturate(1.08);
   border-bottom: 1px solid rgba(201,168,106,.22) !important;
   box-shadow:
-    0 14px 44px rgba(7,17,40,.16),
-    inset 0 1px 0 rgba(255,255,255,.04);
+    0 18px 55px rgba(7,17,40,.18),
+    inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+
+.navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,.08), transparent 22%, transparent 76%, rgba(201,168,106,.08)),
+    linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,0) 46%);
+  opacity: .72;
 }
 
 .navbar::after {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  height: 18px;
+  left: 42px;
+  right: 42px;
+  bottom: 0;
+  height: 1px;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,0));
-  opacity: .45;
+  background: linear-gradient(90deg, transparent, rgba(201,168,106,.58), transparent);
+}
+
+.navbarBrand,
+.navLinks,
+.mobileMenuButton,
+.mobilePanel {
+  position: relative;
+  z-index: 2;
 }
 
 .navbar.adminMode {
   background:
-    linear-gradient(180deg, rgba(7,17,40,.97), rgba(7,17,40,.93)) !important;
-  border-bottom: 1px solid rgba(201,168,106,.28) !important;
-}
-
-.navbarBrand {
-  gap: 14px !important;
-  min-width: 0;
-}
-
-.premiumBrandLockup {
-  gap: 14px !important;
-}
-
-.logoBox,
-.premiumLogoBox {
-  width: 66px !important;
-  height: 66px !important;
-  padding: 3px !important;
-  flex: 0 0 66px;
-  border-radius: 999px !important;
-  background: rgba(255,255,255,.08) !important;
-  border: 1px solid rgba(201,168,106,.48) !important;
-  box-shadow:
-    0 10px 26px rgba(0,0,0,.18),
-    inset 0 1px 0 rgba(255,255,255,.16) !important;
-}
-
-.premiumLogoBox img,
-.logoBox img {
-  border-radius: 999px !important;
-  background: #ffffff !important;
-  object-fit: cover !important;
-}
-
-.brandTextWrap {
-  display: grid !important;
-  gap: 1px !important;
-  align-content: center;
-  min-width: 0;
-}
-
-.navbar .brandName {
-  font-size: clamp(26px, 2.15vw, 40px) !important;
-  line-height: .95 !important;
-  letter-spacing: .08em !important;
-  font-weight: 900 !important;
-  color: #ffffff !important;
-  text-shadow: 0 2px 10px rgba(0,0,0,.08);
-  white-space: nowrap;
-}
-
-.navbar .brandSub {
-  font-size: 11px !important;
-  letter-spacing: .24em !important;
-  color: #e2c17f !important;
-  font-weight: 900 !important;
-  white-space: nowrap;
-}
-
-.brandCreci {
-  margin-top: 2px !important;
-  color: rgba(255,255,255,.72) !important;
-  font-size: 11px !important;
-  font-weight: 900 !important;
-  letter-spacing: .18em !important;
-  white-space: nowrap;
-}
-
-.navLinks {
-  gap: 16px !important;
-  font-size: 11px !important;
-  letter-spacing: .14em !important;
-  font-weight: 900 !important;
-}
-
-.navLinks > a,
-.navDropButton {
-  position: relative;
-  color: rgba(255,255,255,.92) !important;
-  padding: 10px 0 !important;
-  transition: color .22s ease, transform .22s ease !important;
-}
-
-.navLinks > a::after,
-.navDropButton::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 4px;
-  height: 1.5px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, rgba(201,168,106,0), rgba(201,168,106,.96), rgba(201,168,106,0));
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform .22s ease;
-}
-
-.navLinks > a:hover,
-.navDropButton:hover {
-  color: #ffffff !important;
-  transform: translateY(-1px);
-}
-
-.navLinks > a:hover::after,
-.navDropButton:hover::after,
-.navDropdown:focus-within .navDropButton::after {
-  transform: scaleX(1);
-}
-
-.navDropButton {
-  padding-right: 0 !important;
-}
-
-.navDropMenu {
-  top: 42px !important;
-  left: -10px !important;
-  min-width: 240px !important;
-  padding: 10px !important;
-  border-radius: 18px !important;
-  background: rgba(7,17,40,.96) !important;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(201,168,106,.30) !important;
-  box-shadow: 0 24px 60px rgba(7,17,40,.28) !important;
-}
-
-.navDropMenu a {
-  color: rgba(255,255,255,.88) !important;
-  padding: 12px 12px !important;
-  transition: background .2s ease, color .2s ease, transform .2s ease !important;
-}
-
-.navDropMenu a:hover {
-  background: rgba(255,255,255,.06) !important;
-  color: #ffffff !important;
-  transform: translateX(4px);
-}
-
-.adminPill {
-  min-height: 34px !important;
-  padding: 0 14px !important;
-  background: rgba(201,168,106,.10) !important;
-  border: 1px solid rgba(201,168,106,.34) !important;
-  color: #e2c17f !important;
+    radial-gradient(circle at 12% -45%, rgba(255,255,255,.18), transparent 30%),
+    radial-gradient(circle at 84% -45%, rgba(201,168,106,.20), transparent 34%),
+    linear-gradient(180deg, rgba(5,12,30,.99) 0%, rgba(7,17,40,.96) 56%, rgba(7,17,40,.84) 100%) !important;
+  border-bottom: 1px solid rgba(201,168,106,.30) !important;
 }
 
 .navCta {
-  min-height: 40px !important;
-  padding: 0 18px !important;
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px !important;
-  color: #f2d48e !important;
-  border: 1px solid rgba(201,168,106,.62) !important;
-  background: rgba(255,255,255,.04) !important;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
-  transition: transform .22s ease, background .22s ease, box-shadow .22s ease !important;
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 10px 24px rgba(7,17,40,.10);
 }
 
 .navCta:hover {
-  transform: translateY(-1px) !important;
-  background: rgba(201,168,106,.14) !important;
-  box-shadow: 0 12px 30px rgba(7,17,40,.20), inset 0 1px 0 rgba(255,255,255,.10) !important;
+  background:
+    linear-gradient(180deg, rgba(201,168,106,.18), rgba(201,168,106,.08)) !important;
 }
 
-@media (min-width: 1200px) {
+/* Mobile mantém o mesmo padrão, só mais fechado para leitura */
+@media(max-width: 900px) {
   .navbar {
-    padding-left: 34px !important;
-    padding-right: 34px !important;
-  }
-
-  .navLinks {
-    gap: 18px !important;
-  }
-}
-
-@media (max-width: 1180px) {
-  .navbar {
-    padding: 10px 18px !important;
-  }
-
-  .navLinks {
-    gap: 12px !important;
-    font-size: 10px !important;
-  }
-
-  .navbar .brandName {
-    font-size: 28px !important;
-  }
-
-  .navbar .brandSub,
-  .brandCreci {
-    font-size: 10px !important;
-  }
-
-  .logoBox,
-  .premiumLogoBox {
-    width: 62px !important;
-    height: 62px !important;
-    flex-basis: 62px;
-  }
-}
-
-@media (max-width: 900px) {
-  .navbar {
-    min-height: 82px !important;
-    padding: 10px 14px !important;
+    background:
+      radial-gradient(circle at 18% -35%, rgba(255,255,255,.16), transparent 34%),
+      radial-gradient(circle at 90% -35%, rgba(201,168,106,.18), transparent 34%),
+      linear-gradient(180deg, rgba(7,17,40,.99) 0%, rgba(13,27,62,.95) 58%, rgba(13,27,62,.88) 100%) !important;
   }
 
   .navbar::after {
-    display: none;
-  }
-
-  .navbarBrand {
-    gap: 10px !important;
-    max-width: calc(100% - 66px);
-  }
-
-  .logoBox,
-  .premiumLogoBox {
-    width: 56px !important;
-    height: 56px !important;
-    flex-basis: 56px;
-  }
-
-  .navbar .brandName {
-    font-size: 20px !important;
-    letter-spacing: .06em !important;
-  }
-
-  .navbar .brandSub {
-    font-size: 8px !important;
-    letter-spacing: .18em !important;
-  }
-
-  .brandCreci {
-    font-size: 7px !important;
-    letter-spacing: .14em !important;
-  }
-
-  .mobileMenuButton {
-    background: rgba(255,255,255,.08) !important;
-    border: 1px solid rgba(201,168,106,.44) !important;
-    min-height: 42px;
-    min-width: 42px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 10px 24px rgba(0,0,0,.14);
+    left: 18px;
+    right: 18px;
   }
 }
