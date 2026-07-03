@@ -49,8 +49,15 @@ export default function SearchPanel({
         <p>São Paulo, São Roque e regiões. Filtre por cidade, bairro, tipo, valor e características.</p>
       </div>
 
+      <div className="mobileSearchShortcuts" aria-label="Atalhos rápidos">
+        <a href="/imoveis?operacao=Venda">Comprar</a>
+        <a href="/imoveis?operacao=Locação">Alugar</a>
+        <a href="/imoveis?cidade=São%20Roque">São Roque</a>
+        <a href="/imoveis?cidade=São%20Paulo">São Paulo</a>
+      </div>
+
       <form className={`premiumSearch ${loading ? "searchIsLoading" : ""}`} action="/imoveis" onSubmit={() => setLoading(true)}>
-        <div className="searchField primaryField">
+        <div className="searchField primaryField" data-step="1">
           <label>Pretensão</label>
           <select name="operacao" defaultValue={initial.operacao || ""}>
             <option value="">Comprar ou alugar</option>
@@ -59,7 +66,7 @@ export default function SearchPanel({
           </select>
         </div>
 
-        <div className="searchField primaryField">
+        <div className="searchField primaryField" data-step="2">
           <label>Tipo</label>
           <select name="tipo" defaultValue={initial.tipo || ""}>
             <option value="">Todos os tipos</option>
@@ -67,7 +74,7 @@ export default function SearchPanel({
           </select>
         </div>
 
-        <div className="searchField primaryField">
+        <div className="searchField primaryField" data-step="3">
           <label>Cidade</label>
           <select name="cidade" value={city} onChange={(event) => { setCity(event.target.value); setBairro(""); }}>
             <option value="">Todas as cidades</option>
@@ -75,7 +82,7 @@ export default function SearchPanel({
           </select>
         </div>
 
-        <div className="searchField primaryField">
+        <div className="searchField primaryField" data-step="4">
           <label>Bairro</label>
           <select name="bairro" value={bairro} onChange={(event) => setBairro(event.target.value)} disabled={!city || neighborhoods.length === 0}>
             <option value="">{!city ? "Cidade primeiro" : neighborhoods.length ? "Bairros com imóveis" : "Nenhum imóvel salvo"}</option>

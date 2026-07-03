@@ -18,7 +18,7 @@ export default async function Home() {
   const availableLocations = buildAvailableLocations(locations);
 
   return (
-    <main className="page">
+    <main className="page homeMobileRefined">
       <Navbar />
       <Hero />
       <HomeActionCards />
