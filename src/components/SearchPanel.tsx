@@ -46,7 +46,16 @@ export default function SearchPanel({
           <span className="eyebrow">Busca premium</span>
           <h2>Encontre o imóvel ideal</h2>
         </div>
-        <p>São Paulo, São Roque e regiões. Filtre por cidade, bairro, tipo, valor e características.</p>
+        <p>Filtre por objetivo, tipo, cidade, bairro, código, valor e características.</p>
+      </div>
+
+      <div className="desktopSearchChips" aria-label="Atalhos de busca">
+        <a href="/imoveis?operacao=Venda">Comprar</a>
+        <a href="/imoveis?operacao=Locação">Alugar</a>
+        <a href="/imoveis?tipo=Casa">Casas</a>
+        <a href="/imoveis?tipo=Apartamento">Apartamentos</a>
+        <a href="/imoveis?cidade=São%20Roque">São Roque</a>
+        <a href="/imoveis?cidade=São%20Paulo">São Paulo</a>
       </div>
 
       <div className="mobileSearchShortcuts" aria-label="Atalhos rápidos">
@@ -90,6 +99,15 @@ export default function SearchPanel({
           </select>
         </div>
 
+        <div className="searchField primaryField keywordField" data-step="5">
+          <label>Código ou palavra</label>
+          <input name="codigo" placeholder="Código, bairro ou nome" defaultValue={initial.codigo || ""} />
+        </div>
+
+        <button className="searchButton" type="submit">
+          {loading ? <><span className="tinyLoader" />Buscando</> : "Buscar"}
+        </button>
+
         <details className="luxuryDetails advancedDetails">
           <summary><span>Mais filtros</span><strong>+</strong></summary>
           <div className="detailsGrid advancedGrid">
@@ -98,11 +116,8 @@ export default function SearchPanel({
             <div className="searchField"><label>Vagas</label><select name="vagas" defaultValue={initial.vagas || ""}><option value="">Qualquer</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option></select></div>
             <div className="searchField"><label>Valor mín.</label><input name="valorMin" inputMode="numeric" placeholder="500000" defaultValue={initial.valorMin || ""} /></div>
             <div className="searchField"><label>Valor máx.</label><input name="valorMax" inputMode="numeric" placeholder="1500000" defaultValue={initial.valorMax || ""} /></div>
-            <div className="searchField"><label>Código ou nome</label><input name="codigo" placeholder="Código, bairro ou nome" defaultValue={initial.codigo || ""} /></div>
           </div>
         </details>
-
-        <button className="searchButton" type="submit">{loading ? <><span className="tinyLoader" />Buscando</> : "Buscar"}</button>
       </form>
     </section>
   );

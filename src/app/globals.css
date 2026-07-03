@@ -8450,3 +8450,293 @@ a.btnSecondary,
     border-bottom: 0;
   }
 }
+
+/* V28 - busca desktop premium corrigida e mais inteligente */
+.airbnbListingHero {
+  padding-top: 142px !important;
+  padding-bottom: 34px !important;
+  overflow: visible !important;
+}
+
+.airbnbHeroText h1 {
+  overflow: visible !important;
+  line-height: .98 !important;
+}
+
+.airbnbStickySearch {
+  position: sticky !important;
+  top: 88px !important;
+  z-index: 30 !important;
+  width: 100% !important;
+  max-width: 1180px !important;
+  margin: 28px auto 0 !important;
+  padding: 0 !important;
+  border-radius: 32px !important;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(213,181,111,.18), transparent 34%),
+    linear-gradient(135deg, #071128, #0d1b3e 62%, #18346e) !important;
+  border: 1px solid rgba(213,181,111,.42) !important;
+  box-shadow: 0 28px 80px rgba(13,27,62,.18) !important;
+  overflow: visible !important;
+}
+
+.airbnbStickySearch .premiumSearchShell,
+.airbnbStickySearch .compactPremiumSearch,
+.airbnbStickySearch .heroSearch {
+  margin: 0 !important;
+  padding: 26px !important;
+  border-radius: 32px !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  color: white !important;
+}
+
+.airbnbStickySearch .premiumSearchShell::before {
+  display: none !important;
+}
+
+.airbnbStickySearch .premiumSearchHead {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 420px !important;
+  gap: 28px !important;
+  align-items: end !important;
+  margin: 0 0 16px !important;
+}
+
+.airbnbStickySearch .premiumSearchHead h2 {
+  color: white !important;
+  font-size: clamp(32px, 3.4vw, 52px) !important;
+  line-height: 1 !important;
+  margin: 4px 0 0 !important;
+  letter-spacing: -.02em !important;
+}
+
+.airbnbStickySearch .premiumSearchHead p {
+  max-width: none !important;
+  margin: 0 !important;
+  color: rgba(255,255,255,.78) !important;
+  line-height: 1.55 !important;
+  font-size: 15px !important;
+}
+
+.desktopSearchChips {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 0 0 18px;
+  scrollbar-width: none;
+}
+
+.desktopSearchChips::-webkit-scrollbar {
+  display: none;
+}
+
+.desktopSearchChips a {
+  flex: 0 0 auto;
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  color: white;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.16);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .04em;
+  transition: transform .2s ease, background .2s ease, border-color .2s ease;
+}
+
+.desktopSearchChips a:hover {
+  transform: translateY(-2px);
+  background: rgba(213,181,111,.18);
+  border-color: rgba(213,181,111,.48);
+}
+
+.airbnbStickySearch .premiumSearch {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1.18fr 160px !important;
+  gap: 12px !important;
+  align-items: end !important;
+}
+
+.airbnbStickySearch .searchField {
+  min-width: 0 !important;
+  display: grid !important;
+  gap: 7px !important;
+}
+
+.airbnbStickySearch .searchField label {
+  color: #d5b56f !important;
+  font-size: 10px !important;
+  letter-spacing: .14em !important;
+  font-weight: 900 !important;
+  white-space: nowrap !important;
+}
+
+.airbnbStickySearch .searchField select,
+.airbnbStickySearch .searchField input {
+  min-height: 54px !important;
+  border-radius: 18px !important;
+  background: rgba(255,255,255,.96) !important;
+  color: #0d1b3e !important;
+  border: 1px solid rgba(255,255,255,.45) !important;
+  box-shadow: 0 12px 28px rgba(0,0,0,.08) !important;
+  font-size: 14px !important;
+}
+
+.airbnbStickySearch .searchField select:disabled {
+  opacity: .72 !important;
+  cursor: not-allowed !important;
+}
+
+.airbnbStickySearch .keywordField input {
+  font-weight: 800 !important;
+}
+
+.airbnbStickySearch .searchButton {
+  grid-column: 6 !important;
+  grid-row: 1 !important;
+  min-height: 54px !important;
+  width: 100% !important;
+  border-radius: 18px !important;
+  align-self: end !important;
+  background: #d5b56f !important;
+  color: #071128 !important;
+  border: 1px solid rgba(213,181,111,.75) !important;
+  box-shadow: 0 16px 34px rgba(0,0,0,.16) !important;
+  font-size: 13px !important;
+  letter-spacing: .10em !important;
+}
+
+.airbnbStickySearch .searchButton:hover {
+  background: #e5c57b !important;
+  transform: translateY(-2px) !important;
+}
+
+.airbnbStickySearch .advancedDetails {
+  grid-column: 1 / -1 !important;
+  grid-row: 2 !important;
+  margin-top: 2px !important;
+  background: rgba(255,255,255,.07) !important;
+  border: 1px solid rgba(213,181,111,.32) !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
+}
+
+.airbnbStickySearch .advancedDetails summary {
+  min-height: 50px !important;
+  padding: 0 16px !important;
+  color: white !important;
+}
+
+.airbnbStickySearch .advancedDetails summary span {
+  color: #d5b56f !important;
+  letter-spacing: .12em !important;
+  font-size: 11px !important;
+  font-weight: 900 !important;
+}
+
+.airbnbStickySearch .advancedDetails summary strong {
+  color: #d5b56f !important;
+  font-size: 20px !important;
+}
+
+.airbnbStickySearch .advancedGrid {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+  padding: 14px !important;
+  background: rgba(255,255,255,.05) !important;
+}
+
+/* Se a busca for usada fora da página /imoveis, mantém compatível */
+.premiumSearch .keywordField {
+  min-width: 0;
+}
+
+/* Mobile preservado, mas com busca mais organizada */
+@media(max-width: 900px) {
+  .airbnbListingHero {
+    padding-top: 102px !important;
+    padding-bottom: 20px !important;
+  }
+
+  .airbnbStickySearch {
+    position: static !important;
+    margin-top: 18px !important;
+    border-radius: 26px !important;
+  }
+
+  .airbnbStickySearch .premiumSearchShell,
+  .airbnbStickySearch .compactPremiumSearch,
+  .airbnbStickySearch .heroSearch {
+    padding: 18px !important;
+    border-radius: 26px !important;
+  }
+
+  .airbnbStickySearch .premiumSearchHead {
+    display: block !important;
+    margin-bottom: 14px !important;
+  }
+
+  .airbnbStickySearch .premiumSearchHead h2 {
+    font-size: clamp(30px, 8vw, 42px) !important;
+  }
+
+  .airbnbStickySearch .premiumSearchHead p {
+    font-size: 14px !important;
+  }
+
+  .desktopSearchChips {
+    display: none !important;
+  }
+
+  .airbnbStickySearch .premiumSearch {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .airbnbStickySearch .searchButton {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    min-height: 58px !important;
+  }
+
+  .airbnbStickySearch .advancedDetails {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+
+  .airbnbStickySearch .advancedGrid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media(min-width: 901px) and (max-width: 1180px) {
+  .airbnbStickySearch .premiumSearch {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) 160px !important;
+  }
+
+  .airbnbStickySearch .searchButton {
+    grid-column: 4 !important;
+    grid-row: 2 !important;
+  }
+
+  .airbnbStickySearch .advancedDetails {
+    grid-column: 1 / 4 !important;
+    grid-row: 2 !important;
+  }
+
+  .airbnbStickySearch .advancedGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  .airbnbStickySearch .premiumSearchHead {
+    grid-template-columns: 1fr !important;
+  }
+}
