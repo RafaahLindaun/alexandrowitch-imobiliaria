@@ -9125,3 +9125,222 @@ a.btnSecondary,
     bottom: 90px !important;
   }
 }
+
+
+/* V33 - busca mobile com lupinha e imóveis mais aparentes */
+.mobileSearchLauncher,
+.mobileSearchContentWrap {
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .airbnbListingHero {
+    padding-top: 94px !important;
+  }
+
+  .airbnbListingHero .container {
+    width: min(100%, 100%) !important;
+    padding: 0 14px !important;
+  }
+
+  .airbnbHeroText {
+    margin-bottom: 12px !important;
+  }
+
+  .airbnbHeroText .eyebrow {
+    font-size: 10px !important;
+    letter-spacing: .16em !important;
+    margin-bottom: 10px !important;
+  }
+
+  .airbnbHeroText h1 {
+    font-size: clamp(30px, 9vw, 42px) !important;
+    line-height: .98 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .airbnbHeroText p {
+    font-size: 14px !important;
+    line-height: 1.45 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .airbnbStickySearch {
+    margin-top: 12px !important;
+    position: relative !important;
+    top: auto !important;
+  }
+
+  .mobileCollapsibleSearch {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  .mobileSearchLauncher {
+    width: 100% !important;
+    min-height: 68px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    padding: 14px 16px !important;
+    border-radius: 20px !important;
+    background: linear-gradient(180deg, rgba(13,27,62,.98), rgba(13,27,62,.92)) !important;
+    border: 1px solid rgba(201,168,106,.26) !important;
+    box-shadow: 0 14px 34px rgba(13,27,62,.12) !important;
+    color: #fff !important;
+    margin-bottom: 10px !important;
+  }
+
+  .mobileSearchLauncherIcon {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    border-radius: 999px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(201,168,106,.18) !important;
+    border: 1px solid rgba(201,168,106,.34) !important;
+    color: #f0d391 !important;
+    font-size: 22px !important;
+    line-height: 1 !important;
+  }
+
+  .mobileSearchLauncherText {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    display: grid !important;
+    gap: 2px !important;
+    text-align: left !important;
+  }
+
+  .mobileSearchLauncherText strong {
+    font-size: 15px !important;
+    letter-spacing: .02em !important;
+    color: #fff !important;
+  }
+
+  .mobileSearchLauncherText small {
+    font-size: 12px !important;
+    color: rgba(255,255,255,.74) !important;
+  }
+
+  .mobileSearchLauncherArrow {
+    color: #f0d391 !important;
+    font-size: 18px !important;
+    transition: transform .22s ease !important;
+  }
+
+  .mobileSearchLauncherArrow.open {
+    transform: rotate(180deg) !important;
+  }
+
+  .mobileCollapsibleSearch.mobileSearchClosed .mobileSearchContentWrap {
+    display: none !important;
+  }
+
+  .mobileCollapsibleSearch.mobileSearchOpen .mobileSearchContentWrap {
+    display: block !important;
+    margin-top: 10px !important;
+    padding: 16px !important;
+    border-radius: 22px !important;
+    background: linear-gradient(180deg, rgba(13,27,62,.985), rgba(18,35,77,.95)) !important;
+    border: 1px solid rgba(201,168,106,.24) !important;
+    box-shadow: 0 18px 40px rgba(13,27,62,.14) !important;
+  }
+
+  .mobileCollapsibleSearch .premiumSearchHead {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .mobileCollapsibleSearch .premiumSearchHead .eyebrow {
+    font-size: 10px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .mobileCollapsibleSearch .premiumSearchHead h2 {
+    font-size: 30px !important;
+    line-height: .98 !important;
+    color: #fff !important;
+    margin: 0 !important;
+  }
+
+  .mobileCollapsibleSearch .premiumSearchHead p {
+    font-size: 13px !important;
+    line-height: 1.45 !important;
+    color: rgba(255,255,255,.76) !important;
+    margin: 0 !important;
+  }
+
+  .mobileCollapsibleSearch .desktopSearchChips {
+    display: none !important;
+  }
+
+  .mobileCollapsibleSearch .mobileSearchShortcuts {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0,1fr)) !important;
+    gap: 8px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .mobileCollapsibleSearch .mobileSearchShortcuts a {
+    min-height: 42px !important;
+    border-radius: 14px !important;
+    background: rgba(255,255,255,.06) !important;
+    border: 1px solid rgba(201,168,106,.20) !important;
+    color: #fff !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+  }
+
+  .mobileCollapsibleSearch .premiumSearch {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .mobileCollapsibleSearch .searchField,
+  .mobileCollapsibleSearch .searchButton,
+  .mobileCollapsibleSearch .advancedDetails {
+    grid-column: auto !important;
+  }
+
+  .mobileCollapsibleSearch .searchField label {
+    color: #f0d391 !important;
+    font-size: 11px !important;
+    letter-spacing: .12em !important;
+  }
+
+  .mobileCollapsibleSearch .searchField select,
+  .mobileCollapsibleSearch .searchField input {
+    min-height: 50px !important;
+    border-radius: 16px !important;
+    font-size: 15px !important;
+    padding: 0 14px !important;
+    background: rgba(255,255,255,.96) !important;
+  }
+
+  .mobileCollapsibleSearch .searchButton {
+    min-height: 52px !important;
+    border-radius: 16px !important;
+  }
+
+  .mobileCollapsibleSearch .luxuryDetails summary {
+    min-height: 50px !important;
+    border-radius: 16px !important;
+  }
+
+  .mobileCollapsibleSearch .detailsGrid.advancedGrid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .airbnbResultsSection {
+    padding-top: 12px !important;
+  }
+}

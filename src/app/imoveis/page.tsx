@@ -158,7 +158,7 @@ export default async function PropertiesPage({
           </div>
 
           <div className="airbnbStickySearch">
-            <SearchPanel initial={params || {}} availableLocations={availableLocations} />
+            <SearchPanel initial={params || {}} availableLocations={availableLocations} mobileCollapsed />
           </div>
         </div>
       </section>
